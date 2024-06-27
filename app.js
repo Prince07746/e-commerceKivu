@@ -11,6 +11,7 @@ const multer = require('multer');
 require('dotenv').config();
 // cookies
 const cookieParser = require('cookie-parser');
+const { log } = require('console');
 // Create Express app
 const app = express();
 const port = 3030; // You can change this port as needed
@@ -302,7 +303,11 @@ app.get('/logout', (req, res) => {
 
 
 
-// Route for home page
+// Route for home page ============= HOME ==========================================================
+// Route for home page ============= HOME ==========================================================\
+
+
+
 app.get('/', async (req, res) => {
   try {
     // Check if user is authenticated
@@ -347,7 +352,14 @@ app.get('/', async (req, res) => {
 
 
 
-// Search route
+
+
+
+
+
+// Search route =======================================================================
+// Search route =======================================================================
+// Search route =======================================================================
 app.post('/search', async (req, res) => {
   const { query } = req.body;
 
@@ -416,7 +428,7 @@ app.get('/item/:id', async (req, res) => {
     if (authenticated) {
       // User is authenticated, fetch user data from the database
       const email = req.cookies.email; // Retrieve username from cookie
-      const [userDataRows, userDataFields] = await pool.query('SELECT * FROM utilisateurs WHERE Email = ?', [email]);
+//const [userDataRows, userDataFields] = await pool.query/('SELECT * FROM utilisateurs WHERE Email = ?', [email]);
 
       // Fetch similar products, limiting the results to 15
       [produitsimillaire] = await pool.query(
@@ -459,6 +471,24 @@ app.get('/item/:id', async (req, res) => {
   }
 });
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//CLASIFICATTEUR  ====================================================================
+//CLASIFICATTEUR  ====================================================================
 
 
 app.get("/item/classifier/:id", async (req, res) => {
@@ -615,12 +645,27 @@ app.get('/apropos', async (req, res) => {
     const authenticated = await isAuthenticated(req.cookies);
 
     if (authenticated) {
-  res.render('apropos',{logInfo:"bx bx-log-in",log1Info:"logout"});
+       // count the number of all items in the panier
+    const [panierCountResult] = await pool.query('SELECT COUNT(*) as count FROM panier WHERE Email = ?', [req.cookies.email]);
+    const panierCount = panierCountResult[0].count;
+
+  res.render('apropos',{
+    logInfo:"bx bx-log-in",
+    log1Info:"logout",
+    panier: `+${panierCount}`
+  });
   
 } else{
-    
+           // count the number of all items in the panier
+           const [panierCountResult] = await pool.query('SELECT COUNT(*) as count FROM panier WHERE Email = ?', [req.cookies.email]);
+           const panierCount = panierCountResult[0].count;
+       
   
-  res.render('apropos',{logInfo:"bx bx-user-circle",log1Info:"login"});
+  res.render('apropos',{
+    logInfo:"bx bx-user-circle",
+    log1Info:"login",
+     panier: 0
+  });
 
     }
   } catch (error) {
@@ -656,11 +701,26 @@ app.get('/terms',  async (req, res) => {
     const authenticated = await isAuthenticated(req.cookies);
 
     if (authenticated) {
-    res.render('termetcondition',{logInfo:"bx bx-log-in",log1Info:"logout"});
+             // count the number of all items in the panier
+    const [panierCountResult] = await pool.query('SELECT COUNT(*) as count FROM panier WHERE Email = ?', [req.cookies.email]);
+    const panierCount = panierCountResult[0].count;
+
+    res.render('termetcondition',{
+      logInfo:"bx bx-log-in",
+      log1Info:"logout",
+      panier: `+${panierCount}`
+    });
   
     } else{
-
-    res.render('termetcondition',{logInfo:"bx bx-user-circle",log1Info:"login"});
+             // count the number of all items in the panier
+             const [panierCountResult] = await pool.query('SELECT COUNT(*) as count FROM panier WHERE Email = ?', [req.cookies.email]);
+             const panierCount = panierCountResult[0].count;
+         
+    res.render('termetcondition',{
+      logInfo:"bx bx-user-circle",
+      log1Info:"login",
+      panier: 0
+    });
     }
   } catch (error) {
 
@@ -685,11 +745,23 @@ app.get('/privacy',  async (req, res) => {
     const authenticated = await isAuthenticated(req.cookies);
 
     if (authenticated) {
-    res.render('privacyPolicy',{logInfo:"bx bx-log-in",log1Info:"logout"});
+                   // count the number of all items in the panier
+    const [panierCountResult] = await pool.query('SELECT COUNT(*) as count FROM panier WHERE Email = ?', [req.cookies.email]);
+    const panierCount = panierCountResult[0].count;
+
+    res.render('privacyPolicy',{
+      logInfo:"bx bx-log-in",
+      log1Info:"logout",
+     panier: `+${panierCount}`
+    });
   
     } else{
 
-    res.render('privacyPolicy',{logInfo:"bx bx-user-circle",log1Info:"login"});
+    res.render('privacyPolicy',{
+      logInfo:"bx bx-user-circle",
+      log1Info:"login",
+     panier: 0
+    });
     }
   } catch (error) {
 
@@ -722,11 +794,23 @@ app.get('/cookies',  async (req, res) => {
     const authenticated = await isAuthenticated(req.cookies);
 
     if (authenticated) {
-    res.render('cookiepolicy',{logInfo:"bx bx-log-in",log1Info:"logout"});
+                   // count the number of all items in the panier
+    const [panierCountResult] = await pool.query('SELECT COUNT(*) as count FROM panier WHERE Email = ?', [req.cookies.email]);
+    const panierCount = panierCountResult[0].count;
+
+    res.render('cookiepolicy',{
+      logInfo:"bx bx-log-in",
+      log1Info:"logout",
+      panier: `+${panierCount}`
+    });
   
     } else{
 
-    res.render('cookiepolicy',{logInfo:"bx bx-user-circle",log1Info:"login"});
+    res.render('cookiepolicy',{
+      logInfo:"bx bx-user-circle",
+      log1Info:"login",
+      panier: 0
+    });
     }
   } catch (error) {
 
@@ -1246,6 +1330,28 @@ app.post('/add-to-cart', async (req, res) => {
       res.status(500).json({ success: false });
   }
 });
+
+
+
+
+
+// PANIER ACCESS   ===========================================
+
+
+app.get("/panier",async (req,res)=>{
+    // Fetch item details from the database based on the item ID
+    const authenticated = await isAuthenticated(req.cookies);
+
+    if(authenticated){
+      res.redirect('/dashboard');
+    }else{
+      res.redirect('/login');
+    }
+
+});
+
+
+
 
 
 
