@@ -323,7 +323,6 @@ app.get('/', async (req, res) => {
     // count the number of all items in the panier
     const [panierCountResult] = await pool.query('SELECT COUNT(*) as count FROM panier WHERE Email = ?', [req.cookies.email]);
     const panierCount = panierCountResult[0].count;
-    
     // Determine user status for rendering purposes
     const utilisateur = authenticated ? "David" : "Membre";
     const logInfo = authenticated ? "bx bx-log-in" : "bx bx-user-circle";
@@ -425,12 +424,18 @@ app.get('/item/:id', async (req, res) => {
         [`%${currentType}%`, `%${currentSousType}%`, itemId]
       );
 
+        // count the number of all items in the panier
+    const [panierCountResult] = await pool.query('SELECT COUNT(*) as count FROM panier WHERE Email = ?', [req.cookies.email]);
+    const panierCount = panierCountResult[0].count;
+    const log2Info = authenticated ? `+${panierCount}` : 0;
+
       res.render('afficheurproduit', {
         produits: article,
         produitsimillaire: produitsimillaire,
         utilisateur: "David",
         logInfo: "bx bx-log-in",
-        log1Info: "logout"
+        log1Info: "logout",
+        panier: log2Info
       });
 
     } else {
@@ -458,13 +463,24 @@ app.get('/item/:id', async (req, res) => {
 
 app.get("/item/classifier/:id", async (req, res) => {
   const typeId = req.params.id;
-
+ 
   try {
-    // Query to find exact matches
+    const authenticated = await isAuthenticated(req.cookies);
+    
+    if(authenticated){
+       // Query to find exact matches
     const [exactMatchRows] = await pool.query('SELECT * FROM articles WHERE type = ?', [typeId]);
-
+    const [panierCountResult] = await pool.query('SELECT COUNT(*) as count FROM panier WHERE Email = ?', [req.cookies.email]);
+    const panierCount = panierCountResult[0].count;
+  
     if (exactMatchRows.length > 0) {
-      res.render('categoriseur', { products: exactMatchRows ,logInfo:"bx bx-log-in",log1Info:"logout"});
+      res.render('categoriseur', 
+        { 
+        products: exactMatchRows ,
+        logInfo:"bx bx-user-circle",
+        log1Info:"logout",
+        panier: `+${panierCount}`
+      });
     } else {
       // If no exact matches found, find similar items
       const [similarMatchRows] = await pool.query(`
@@ -474,15 +490,57 @@ app.get("/item/classifier/:id", async (req, res) => {
         OR type LIKE ?
       `, [`%${typeId}%`, `${typeId}%`, `%${typeId}`]);
 
-      res.render('categoriseur', { products: similarMatchRows ,logInfo:"bx bx-log-in",log1Info:"logout"});
+      res.render('categoriseur', {
+         products: similarMatchRows,
+         logInfo:"bx bx-user-circle",
+         log1Info:"logout",
+        panier: `+${panierCount}`
+        });
+          
     }
+
+    }else{
+
+  // Query to find exact matches
+  const [exactMatchRows] = await pool.query('SELECT * FROM articles WHERE type = ?', [typeId]);
+
+  if (exactMatchRows.length > 0) {
+    res.render('categoriseur', 
+      { 
+      products: exactMatchRows ,
+      logInfo:"bx bx-log-in",
+      log1Info:"logout",
+      panier: 0
+    });
+  } else {
+    // If no exact matches found, find similar items
+    const [similarMatchRows] = await pool.query(`
+      SELECT * FROM articles 
+      WHERE type LIKE ? 
+      OR type LIKE ? 
+      OR type LIKE ?
+    `, [`%${typeId}%`, `${typeId}%`, `%${typeId}`]);
+
+    res.render('categoriseur', {
+       products: similarMatchRows,
+       logInfo:"bx bx-log-in",
+       log1Info:"logout",
+       panier: 0
+      });
+  }
+
+
+
+
+    }
+    
+
+
   } catch (err) {
     console.error('Error executing query', err);
     res.status(500).send('Internal Server Error');
   }
 });
-
-
 
 
 
@@ -495,6 +553,9 @@ app.get("/item/classifier/:id1/:id2", async (req, res) => {
   const soustype = req.params.id2;
 
   try {
+    // Check authentication
+    const authenticated = await isAuthenticated(req.cookies);
+
     let rows = [];
 
     // Query to find articles with matching type and soustype
@@ -510,21 +571,33 @@ app.get("/item/classifier/:id1/:id2", async (req, res) => {
       }
     }
 
+    // Retrieve panier count if authenticated
+    let panierCount = 0;
+    if (authenticated) {
+      const [panierCountResult] = await pool.query('SELECT COUNT(*) as count FROM panier WHERE Email = ?', [req.cookies.email]);
+      panierCount = panierCountResult[0].count;
+    }
+
     if (rows.length > 0) {
-      // If articles found, render the results
-      res.render('categoriseur', { products: rows, logInfo: "bx bx-log-in", log1Info: "logout" });
+      // If articles found, render the results with authentication information and panier count
+      res.render('categoriseur', { 
+        products: rows,
+         logInfo: authenticated ? "bx bx-user-circle" : "bx bx-log-in", 
+         log1Info: authenticated ? "logout": "login",
+          panier: panierCount });
     } else {
       // If no articles found with both type and soustype, render an empty state
-      res.render('categoriseur', { products: [], logInfo: "bx bx-log-in", log1Info: "logout" });
+      res.render('categoriseur', { 
+        products: [], 
+        logInfo: authenticated ? "bx bx-user-circle" : "bx bx-log-in", 
+        log1Info:authenticated ? "logout": "login",
+         panier: panierCount });
     }
   } catch (err) {
     console.error('Error executing query', err);
     res.status(500).send('Internal Server Error');
   }
 });
-
-
-
 
 
 
@@ -1024,6 +1097,7 @@ app.get('/admin/deleteProduit/:productId', async (req, res) => {
 app.get('/moi', async (req, res) => {
   try {
       const authenticated = await isAuthenticated(req.cookies);
+
       if (!authenticated) {
           return res.redirect('/login');
       }
@@ -1031,6 +1105,9 @@ app.get('/moi', async (req, res) => {
       const email = req.cookies.email;
       const [userRows] = await pool.query('SELECT * FROM utilisateurs WHERE Email = ?', [email]);
       const [cartRows] = await pool.query('SELECT * FROM panier WHERE Email = ?', [email]);
+      const [panierCountResult] = await pool.query('SELECT COUNT(*) as count FROM panier WHERE Email = ?', [req.cookies.email]);
+      const panierCount = panierCountResult[0].count;
+    
 
       const cartItems = await Promise.all(cartRows.map(async (cartItem) => {
           const [productRows] = await pool.query('SELECT * FROM articles WHERE id = ?', [cartItem.ProductID]);
@@ -1040,9 +1117,16 @@ app.get('/moi', async (req, res) => {
           };
       }));
 
+      const logInfo = authenticated ? "bx bx-log-in" : "bx bx-user-circle";
+      const log1Info = authenticated ? "logout" : "login";
+      const log2Info = authenticated ? `+${panierCount}` : 0;
+
       res.render('dashboard', {
           user: userRows[0],
-          cartItems: cartItems
+          cartItems: cartItems,
+          logInfo: logInfo,
+          log1Info: log1Info,
+          panier: log2Info
       });
   } catch (error) {
       console.error('Error fetching dashboard data:', error);

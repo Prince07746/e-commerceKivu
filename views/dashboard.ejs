@@ -10,6 +10,10 @@
     <script src="/external/bootstrap.bundle.js"></script>
     <script src="/javascript/comon1.js"></script>
 
+    <link rel="stylesheet" href="/external/bootstrap.css">
+    <link href='/boxicons/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="/css/style.css">
+
     <style>
         .editable {
             cursor: pointer;
@@ -39,6 +43,235 @@
     </style>
 </head>
 <body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark" id="navbar-main" style="background-color: black;">
+        <a class="navbar-brand" href="/">
+          <img src="/images/logo3.png" alt="Bootstrap" width="140" height="145">
+        </a>
+    
+        <button class="navbar-toggler" type="button" id="button-menu" >
+          <span class="navbar-toggler-icon" id="icon-m"></span>
+          
+        </button>
+    
+    
+    
+        <div id="utilisateur-item">
+            <a href="/panier" type="button" class="btn btn-primary btn-sm position-relative">
+                <i class='bx bx-cart-add' ></i>
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                  <span><%= panier %></span>
+                </span>
+            </a>
+        
+            <a href="/<%= log1Info %>" id="utilisateur"><i class='<%= logInfo %>'></i></a>
+            </div>
+    
+      </nav>
+    
+      <section class="menu-bar" id="menu-bar">
+        <a href="/item/classifier/Immobilier">
+          <ul>
+            <li><i class='bx bxs-institution'></i></li>
+            <li>Immobilier</li>
+          </ul>
+        </a>
+        <a href="/item/classifier/Meuble">
+          <ul>
+            <li><i class='bx bxs-fridge'></i></li>
+            <li>Meuble</li>
+          </ul>
+        </a>
+        <a href="/item/classifier/Apareile">
+          <ul>
+            <li><i class='bx bx-tv'></i></li>
+            <li>Apareille</li>
+          </ul>
+        </a>
+        <a href="/moi">
+          <ul>
+            <li><i class='bx bx-user-circle'></i></li>
+            <li>Mon compte</li>
+          </ul>
+        </a>
+        <a href="/panier">
+            <ul>
+              <li><i class='bx bx-cart-add' ></i></li>
+              <li>Pagner <span class="badge text-bg-danger" style="color: white; background-color:#e13a0d;"><%= panier %></span></li>
+              
+            </ul>
+          </a>
+          <a href="/<%= log1Info %>">
+            <ul>
+              <li class='<%= logInfo %>' style="font-size: 30px; margin-bottom: 10px"></li>
+            </ul>
+          </a>
+      
+    
+      </section>
+    
+    
+    <nav id="navigation-bar-phone">
+    
+    <div id="phone-nav" class="ph">
+      <a href="/item/classifier/Immobilier">Immobilier</a>
+      <i class='bx bxs-institution'></i>
+    </div>
+    <div id="phone-nav" class="ph">
+      <a href="/item/classifier/Meuble">meuble</a>
+      <i class='bx bxs-fridge'></i>
+    </div>
+    <div id="phone-nav" type="button" class="btn btn-primary menu-principal" data-toggle="modal" data-target="#unique-menuModal">
+      <a >Menu</a>
+      <i class='bx bx-plus'></i>
+    </div>
+    <div id="phone-nav" class="ph">
+      <a href="/item/classifier/Apareile">Apareille</a>
+      <i class='bx bx-tv'></i>
+    </div>
+    <div id="phone-nav" class="ph">
+      <a href="/moi"><b>Moi</b></a>
+      <i class='bx bx-user-circle'></i>
+    </div>
+    
+    </nav>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <section class="main-intro">
+      <center>
+        <h3>Retrouve tout </h3>
+        <p>En un seul clic et voilà ton rêve</p>
+        <div class="search-data">
+          <i class="bx bx-search"></i>
+          <input id="searchInput" type="text" placeholder="Design, code, mar...">
+          <button id="searchBtn" class="btn btn-info">Rechercher</button>
+        </div>
+      </center>
+    </section>
+    
+    <style>
+      .bar-de-resultat {
+        margin-left: 20%;
+        margin-right: 10%;
+        width: 70%;
+        height: 400px;
+        overflow: scroll;
+        top: 25vh;
+        left: 10vh;
+        min-height: 50px;
+        background-color: white;
+        border-radius: 20px;
+        border: none;
+        z-index: 999;
+        display: none;
+        padding: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      }
+    </style>
+    
+    <div class="bar-de-resultat" id="results"></div>
+    
+    <script>
+      const searchInput = document.getElementById('searchInput');
+      const searchBtn = document.getElementById('searchBtn');
+      const resultsDiv = document.getElementById('results');
+      let debounceTimeout;
+    
+      searchBtn.addEventListener('click', function() {
+        search();
+      });
+    
+      searchInput.addEventListener('input', function() {
+        clearTimeout(debounceTimeout);
+        debounceTimeout = setTimeout(function() {
+          search();
+        }, 300);
+      });
+    
+      async function search() {
+        const query = searchInput.value.trim();
+        if (query.length > 0) {
+          // Display loading spinner
+          resultsDiv.innerHTML = '<div class="spinner-border text-primary" role="status"><span class="sr-only">Loading...</span></div>';
+    
+          // Simulate a request delay
+          setTimeout(async function() {
+            // Fetch search results (replace with your actual fetch logic)
+            const results = await fetchSearchResults(query);
+    
+            // Display results
+            displayResults(results);
+          }, 1000); // Simulated delay of 1 second
+        } else {
+          // Clear results if query is empty
+          resultsDiv.innerHTML = '';
+          resultsDiv.style.display = 'none';
+        }
+      }
+    
+      async function fetchSearchResults(query) {
+        // Replace this with your actual fetch logic
+        // For example, fetch data from server
+        const response = await fetch('/search', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ query })
+        });
+        const data = await response.json();
+        return data;
+      }
+    
+      function displayResults(results) {
+        const resultsDiv = document.getElementById('results');
+    
+        if (results.length === 0) {
+          resultsDiv.innerHTML = '<p class="text-center">Pas de résultats trouvés.</p>';
+        } else {
+          const ul = document.createElement('ul');
+          ul.classList.add('list-group', 'mb-3', 'd-flex', 'flex-wrap');
+    
+          results.forEach(result => {
+            const li = document.createElement('li');
+            li.classList.add('list-group-item', 'mb-3', 'border-0', 'shadow-sm', 'rounded', 'w-20');
+            li.style.background = 'white'; // Background color
+            li.innerHTML = `
+              <h6 class="mb-1" style="font-size: 12px">${result.nom}</h6>
+              <p class="mb-1" style="font-size: 10px">Prix: ${result.prix}</p>
+              <p class="mb-1" style="font-size: 10px">Origine: ${result.origine}</p>
+              <a href="/item/${result.id}" class="btn btn-primary btn-sm">Voir plus</a>
+            `;
+            ul.appendChild(li);
+          });
+    
+          resultsDiv.innerHTML = ''; // Clear previous results
+          resultsDiv.appendChild(ul);
+        }
+    
+        resultsDiv.style.display = 'block'; // Display the results container
+      }
+    </script>
+    
+    
+    
+    
+
+
+
+
     <div class="container mt-5">
         <h1 class="mb-4">User Dashboard</h1>
         <div class="row">
@@ -85,6 +318,11 @@
             </div>
         </div>
     </div>
+    <hr>
+    <center>
+        <i>@In collaboration with Matongo prince</i>
+    </center>
+    <hr>
 
     <script>
         document.addEventListener('DOMContentLoaded', (event) => {
