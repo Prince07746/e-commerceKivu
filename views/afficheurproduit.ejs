@@ -335,6 +335,9 @@
             <button class="btn btn-success" onclick="openWhatsApp()">
               <i class='bx bxl-whatsapp'></i> Discuter sur WhatsApp
             </button>
+            <a href="#" class="btn btn-danger add-to-cart" data-id="<%= produit.id %>">
+              <i class='bx bx-cart'></i> Ajouter au Panier
+            </a>
           </div>
           <div id="produit-description-complet">
             <h5 style="color: rgb(38, 190, 207);">Détails</h5>
@@ -351,7 +354,36 @@
 </div>
 
 
-
+<script>
+  document.addEventListener('DOMContentLoaded', (event) => {
+    document.querySelectorAll('.add-to-cart').forEach(button => {
+      button.addEventListener('click', async (event) => {
+        event.preventDefault();
+        const productId = event.target.dataset.id;
+        
+        try {
+          const response = await fetch('/add-to-cart', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ productId }),
+          });
+  
+          const result = await response.json();
+          if (result.success) {
+            alert('Produit ajouté au panier!');
+          } else {
+            alert('Erreur lors de l\'ajout du produit au panier.');
+          }
+        } catch (error) {
+          console.error('Error adding to cart:', error);
+          alert('Erreur lors de l\'ajout du produit au panier.');
+        }
+      });
+    });
+  });
+  </script>
 
 <div id="details-produit">
 
@@ -415,6 +447,9 @@
                 <button class="btn btn-success" onclick="openWhatsApp()">
                   <i class='bx bxl-whatsapp'></i> Discuter sur WhatsApp
                 </button>
+                <a href="#" class="btn btn-danger add-to-cart" data-id="<%= produit.id %>">
+                  <i class='bx bx-cart'></i> Ajouter au Panier
+                </a>
                 
               </div>
     

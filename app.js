@@ -320,18 +320,23 @@ app.get('/', async (req, res) => {
     const [rows, fields] = await pool.query(
       'SELECT * FROM articles ORDER BY cree_le DESC LIMIT 25'
     );
-
+    // count the number of all items in the panier
+    const [panierCountResult] = await pool.query('SELECT COUNT(*) as count FROM panier WHERE Email = ?', [req.cookies.email]);
+    const panierCount = panierCountResult[0].count;
+    
     // Determine user status for rendering purposes
     const utilisateur = authenticated ? "David" : "Membre";
     const logInfo = authenticated ? "bx bx-log-in" : "bx bx-user-circle";
     const log1Info = authenticated ? "logout" : "login";
+    const log2Info = authenticated ? `+${panierCount}` : 0;
     
     // Render home page with fetched data
     res.render('home', {
       products: rows,
       utilisateur: utilisateur,
       logInfo: logInfo,
-      log1Info: log1Info
+      log1Info: log1Info,
+      panier: log2Info
     });
 
   } catch (error) {
@@ -1006,13 +1011,157 @@ app.get('/admin/deleteProduit/:productId', async (req, res) => {
 
 
 // ================================================================================================================================
-// ================================================================================================================================
 
 
 
 
 
 
+// DASHBOARD UTIISATEUR ===================================================================
+// ======================================================================================
+
+// Route to display the user dashboard
+app.get('/moi', async (req, res) => {
+  try {
+      const authenticated = await isAuthenticated(req.cookies);
+      if (!authenticated) {
+          return res.redirect('/login');
+      }
+
+      const email = req.cookies.email;
+      const [userRows] = await pool.query('SELECT * FROM utilisateurs WHERE Email = ?', [email]);
+      const [cartRows] = await pool.query('SELECT * FROM panier WHERE Email = ?', [email]);
+
+      const cartItems = await Promise.all(cartRows.map(async (cartItem) => {
+          const [productRows] = await pool.query('SELECT * FROM articles WHERE id = ?', [cartItem.ProductID]);
+          return {
+              ...productRows[0],
+              quantite: cartItem.Quantité
+          };
+      }));
+
+      res.render('dashboard', {
+          user: userRows[0],
+          cartItems: cartItems
+      });
+  } catch (error) {
+      console.error('Error fetching dashboard data:', error);
+      res.status(500).send('Internal Server Error');
+  }
+});
+
+// Route to update user profile
+app.post('/update-profile', async (req, res) => {
+  const { name, email, phone } = req.body;
+  const userEmail = req.cookies.email;
+
+  try {
+      const [result] = await pool.query(
+          'UPDATE utilisateurs SET NomUtilisateur = ?, Email = ?, Téléphone = ? WHERE Email = ?',
+          [name, email, phone, userEmail]
+      );
+
+      if (result.affectedRows === 1) {
+          res.json({ success: true });
+      } else {
+          res.json({ success: false });
+      }
+  } catch (error) {
+      console.error('Error updating profile:', error);
+      res.status(500).json({ success: false });
+  }
+});
+
+// Route to update cart quantity
+app.post('/update-cart', async (req, res) => {
+  const { id, quantity } = req.body;
+  const email = req.cookies.email;
+
+  try {
+      const [result] = await pool.query(
+          'UPDATE panier SET Quantité = ? WHERE ProductID = ? AND Email = ?',
+          [quantity, id, email]
+      );
+
+      if (result.affectedRows === 1) {
+          res.json({ success: true });
+      } else {
+          res.json({ success: false });
+      }
+  } catch (error) {
+      console.error('Error updating cart:', error);
+      res.status(500).json({ success: false });
+  }
+});
+
+// Route to remove item from cart
+app.post('/remove-from-cart', async (req, res) => {
+  const { id } = req.body;
+  const email = req.cookies.email;
+
+  try {
+      const [result] = await pool.query(
+          'DELETE FROM panier WHERE ProductID = ? AND Email = ?',
+          [id, email]
+      );
+
+      if (result.affectedRows === 1) {
+          res.json({ success: true
+          })
+        } else {
+            res.json({ success: false });
+        }
+    } catch (error) {
+        console.error('Error removing item from cart:', error);
+        res.status(500).json({ success: false });
+    }
+});
+
+// Route to add item to cart
+app.post('/add-to-cart', async (req, res) => {
+  const { productId } = req.body;
+  const email = req.cookies.email;
+
+  if (!email) {
+      return res.status(401).json({ success: false, message: 'User not authenticated' });
+  }
+
+  try {
+      const [userRows] = await pool.query('SELECT * FROM utilisateurs WHERE Email = ?', [email]);
+      if (userRows.length === 0) {
+          return res.status(404).json({ success: false, message: 'User not found' });
+      }
+      const userId = userRows[0].UserID;
+
+      const [productRows] = await pool.query('SELECT * FROM articles WHERE id = ?', [productId]);
+      if (productRows.length === 0) {
+          return res.status(404).json({ success: false, message: 'Product not found' });
+      }
+      const product = productRows[0];
+
+      const [cartRows] = await pool.query(
+          'SELECT * FROM panier WHERE UserID = ? AND ProductID = ?',
+          [userId, productId]
+      );
+
+      if (cartRows.length > 0) {
+          await pool.query(
+              'UPDATE panier SET Quantité = Quantité + 1, Prix = ? WHERE UserID = ? AND ProductID = ?',
+              [product.prix * (cartRows[0].Quantité + 1), userId, productId]
+          );
+      } else {
+          await pool.query(
+              'INSERT INTO panier (UserID, ProductID, Quantité, Prix, Email) VALUES (?, ?, ?, ?, ?)',
+              [userId, productId, 1, product.prix, email]
+          );
+      }
+
+      res.json({ success: true });
+  } catch (error) {
+      console.error('Error adding item to cart:', error);
+      res.status(500).json({ success: false });
+  }
+});
 
 
 

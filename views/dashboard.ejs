@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+
+    <script src="/external/bootstrap.bundle.js"></script>
+    <script src="/javascript/comon1.js"></script>
+
+    <style>
+        .editable {
+            cursor: pointer;
+            display: inline-block;
+            border-bottom: 1px dashed #007bff;
+        }
+        .edit-input {
+            display: none;
+        }
+        .cart-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        .cart-item img {
+            margin-right: 1rem;
+        }
+        .cart-item-details {
+            flex-grow: 1;
+        }
+        .cart-item p {
+            margin: 0.5rem 0;
+        }
+        .cart-item .btn {
+            margin-right: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">User Dashboard</h1>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class='bx bx-user-circle'></i> Profile</h3>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Name:</strong> <span class="editable" data-edit="name"><%= user.NomUtilisateur %></span></p>
+                        <p><strong>Email:</strong> <span class="editable" data-edit="email"><%= user.Email %></span></p>
+                        <p><strong>Phone:</strong> <span class="editable" data-edit="phone"><%= user.Téléphone %></span></p>
+                        <p>
+                            <button class="btn btn-primary" id="edit-profile">Edit Profile</button>
+                            <button class="btn btn-success edit-input" id="save-profile">Save</button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class='bx bx-cart'></i> Cart</h3>
+                    </div>
+                    <div class="card-body">
+                        <% cartItems.forEach(item => { %>
+                            <div class="cart-item mb-3">
+                                <img src="/<%= item.img_id %>/<%= item.img1 %>" alt="<%= item.nom %>" class="img-thumbnail" style="width: 100px;">
+                                <div class="cart-item-details">
+                                    <h4><%= item.nom %></h4>
+                                    <p>Price: $<span class="item-price"><%= item.prix %></span></p>
+                                    <p>Quantity: <input type="number" class="form-control item-quantity" value="<%= item.quantite %>" min="1" data-id="<%= item.id %>"></p>
+                                    <p>Total: $<span class="item-total-price"><%= item.prix * item.quantite %></span></p>
+                                    <button class="btn btn-danger remove-item" data-id="<%= item.id %>">Remove</button>
+                                    <button class="btn btn-primary contact-seller" data-link="<%= item.lien %>">Contact Seller</button>
+                                </div>
+                            </div>
+                        <% }) %>
+                        <div class="text-right">
+                            <button class="btn btn-success" id="checkout">Checkout</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            // Enable editing
+            document.getElementById('edit-profile').addEventListener('click', () => {
+                document.querySelectorAll('.editable').forEach((element) => {
+                    const field = element.dataset.edit;
+                    const input = document.createElement('input');
+                    input.type = 'text';
+                    input.classList.add('form-control', 'edit-input');
+                    input.value = element.innerText;
+                    input.dataset.edit = field;
+                    element.parentNode.replaceChild(input, element);
+                });
+                document.getElementById('edit-profile').style.display = 'none';
+                document.getElementById('save-profile').style.display = 'block';
+            });
+
+            // Save profile changes
+            document.getElementById('save-profile').addEventListener('click', async () => {
+                const updatedData = {};
+                document.querySelectorAll('.edit-input').forEach((input) => {
+                    updatedData[input.dataset.edit] = input.value;
+                });
+
+                const response = await fetch('/update-profile', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(updatedData),
+                });
+
+                const result = await response.json();
+                if (result.success) {
+                    location.reload();
+                } else {
+                    alert('Failed to update profile');
+                }
+            });
+
+            // Handle cart quantity change
+            document.querySelectorAll('.item-quantity').forEach((input) => {
+                input.addEventListener('change', async (event) => {
+                    const id = event.target.dataset.id;
+                    const quantity = event.target.value;
+                    const price = parseFloat(event.target.closest('.cart-item').querySelector('.item-price').innerText);
+                    const totalPrice = price * quantity;
+                    event.target.closest('.cart-item').querySelector('.item-total-price').innerText = totalPrice.toFixed(2);
+
+                    await fetch('/update-cart', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ id, quantity }),
+                    });
+                });
+            });
+
+            // Remove item from cart
+            document.querySelectorAll('.remove-item').forEach((button) => {
+                button.addEventListener('click', async (event) => {
+                    const id = event.target.dataset.id;
+
+                    const response = await fetch('/remove-from-cart', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ id }),
+                    });
+
+                    const result = await response.json();
+                    if (result.success) {
+                        location.reload();
+                    } else {
+                        alert('Failed to remove item');
+                    }
+                });
+            });
+
+            // Contact seller
+            document.querySelectorAll('.contact-seller').forEach((button) => {
+                button.addEventListener('click', (event) => {
+                    const link = event.target.dataset.link;
+                    window.open(link, '_blank');
+                });
+            });
+
+            // Handle checkout
+            document.getElementById('checkout').addEventListener('click', () => {
+                alert('Proceeding to checkout...');
+            });
+        });
+    </script>
+</body>
+</html>
