@@ -1,0 +1,791 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Averia+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Fredericka+the+Great&family=Honk&family=Rubik+Glitch+Pop&display=swap');
+
+
+:root{
+
+    --main:rgb(12, 12, 12);
+    --second: rgb(44, 187, 235);
+    --third: rgb(252, 185, 15);
+    --use: white;
+}
+@keyframes slideItem {
+    from {
+      opacity: 0;
+      transform: translateY(-50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+@keyframes slideItem2 {
+    from {
+      opacity: 0;
+      transform: translateY(90px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+/* animation section */
+
+@keyframes slideText {
+    0% {
+      transform: translateX(100%); /* Start position: move text to the right */
+    }
+    100% {
+      transform: translateX(-100%); /* End position: move text to the left */
+      opacity: 0.5;
+    }
+
+}
+@keyframes slide {
+    0% {
+      transform: translateX(800%);
+    }
+    100% {
+      transform: translateX(-800%); 
+    }
+
+}
+
+
+
+/*  FOR SCREEN LIKE PHONES , TABLET */
+@media screen and (max-width: 970px) {
+    
+    /*  SEARCH AREA */
+    .main-intro{
+        background-image: url('/images/prince.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: auto;
+        padding-top: 10vh;
+        padding-bottom: 13vh;
+
+    }
+    .main-intro center h3{
+        color: var(--use);
+        font-weight: bolder;
+        font-family: 'Montserrat';
+        transform: scale(0.99);
+        animation: slideItem 0.50s linear;
+        font-size: 19px;
+    }
+    .main-intro center p{
+        color: var(--second);
+        font-weight: 400;
+        transform: scale(0.98);
+        animation: slideItem 1s linear;
+        font-family: 'Montserrat';
+        font-size: 15px;
+    }
+    .search-data{
+        background-color: rgba(250, 250, 250, 0.839);
+        width: fit-content;
+        padding: 5px;
+        align-items: center;
+        display: flex;
+        border-radius: 15px;
+        transition: all 0.40s;
+        width: 90%;
+        animation: slideItem 1.1s linear;
+    }
+    .search-data:hover{
+        border: solid var(--second) 1px;
+    }
+    .search-data input{
+        outline: none;
+        border: none;
+        padding: 10px;
+        border-radius: 15px;
+        background-color: transparent;
+        width: 60%;
+    }
+    .search-data button{
+        border-radius: 20px;
+        width: 30%;
+    }
+    .search-data i{
+        margin-left: 10px;
+        width: 10%;
+    }
+
+    
+      /*   ================  produits   =============== */
+  
+
+   #resultat-produit{
+    padding: 10px;
+    display: flex;
+   }
+   #apart-filtre-et-addition{
+    display: none;
+   }
+   
+   #resultat-produit #item-resultat{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px;
+   }
+
+  #item-resultat a{
+    text-decoration: none;
+  }
+   .product-item {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    /* Optional: Adjust width for different layouts */
+    width: 47%;
+    height: max-content;
+    box-shadow: 2px 3px 4px gray;
+    font-size: 20px;
+    font-family: 'Montserrat';
+    cursor: pointer;
+    transition: all 0.40s;
+    text-decoration: none;
+}
+.product-item:hover{
+  transform: scale(0.99);
+  opacity: 0.9;
+}
+
+.product-item span{
+    color: white;
+    padding: 5px;
+    border-top-right-radius: 10px;
+    font-family: 'Montserrat' !important;
+    font-size: 13px;
+    background-color: rgba(0, 128, 0, 0.683);
+    width: max-content;
+    box-shadow: 2px 3px 4px gray;
+}
+
+.product-item img {
+    width: 100%;
+    height: 160px; /* Adjust image height as needed */
+    object-fit: cover;
+    margin-bottom: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.product-item .product-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 15px;
+    color: gray;
+}
+
+.product-item .product-price {
+     color: green;
+     font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 0;
+}
+
+
+   /* =============================================== */
+
+
+
+
+   /* our work */
+
+
+ 
+    .our-work{
+      position: relative;
+    }
+
+    .our-work .images-our-work{
+      padding: 10px;
+      width: 100%;
+      padding-bottom: 30px;
+    }
+    .our-work h2{
+      margin: 20px;
+    }
+    .our-work h2 #one-our{
+      font-family: 'Gill Sans', 'Gill Sans MT';
+      color: var(--second);
+      font-weight: bold;
+      box-shadow: 3px 5px 3px;
+    
+    }
+    .our-work h2 #two-our{
+      font-family: 'Montserrat';
+      color: var(--third);
+      box-shadow: 3px 5px 3px;
+      
+    }
+    .our-work .images-our-work img{
+      width: 60%;
+      height: 200px;
+      object-fit: cover;
+    }
+    #img-our-work-1,#img-our-work-2,#img-our-work-3,#img-our-work-4{
+      position: absolute;
+    }
+    #img-our-work-1{
+      margin-left: 10px;
+      margin-top: 10px;
+      border-top-left-radius: 20px;
+      border-left: solid var(--third);
+      box-shadow: 2px 3px 4px;
+      animation: slideItem 10s;
+
+    }
+    #img-our-work-2{
+      margin-left: 30px;
+      margin-top: 40px;
+      box-shadow: 2px 3px 4px;
+      border-top-left-radius: 20px;
+      animation: slideItem 10s;
+
+    }
+    #img-our-work-3{
+      margin-left: 60px;
+      margin-top: 60px;
+      box-shadow: 2px 3px 4px;
+      border-top-left-radius: 20px;
+      animation: slideItem 10s;
+
+    }
+    #img-our-work-4{
+      margin-left: 90px;
+      margin-top: 90px;
+      border-bottom-right-radius: 20px;
+      border-right: solid var(--second);
+      box-shadow: 2px 3px 4px;
+      animation: slideItem 10s;
+    }
+   
+    .our-work .our-work-text{
+      position: relative;
+      margin-top: 280px;
+      animation: slideItem 10s;
+      padding: 10px;
+      font-family: 'Montserrat';
+    }
+
+   /* ================================================= */
+
+
+/* work  */
+
+.section-title {
+  font-size: 36px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 50px;
+  text-align: center;
+}
+.work-item {
+  background-color: #fff;
+  padding: 20px;
+  margin-bottom: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+.work-item img{
+  width: 100%;
+  height: 200px;
+  object-fit:cover;
+  object-position: center;
+}
+.work-item h3 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 15px;
+}
+.work-item p {
+  font-size: 16px;
+  color: #666;
+}
+
+.company-logo {
+  max-width: 50px;
+  margin: 0 auto;
+  display: block;
+}
+.star {
+  color: #FFD700;
+}
+@keyframes slide {
+  0% {left: 100%;}
+  100% {left: -100%;}
+}
+
+/* tetsimony */
+.testimony{
+  display: flex;
+  flex-wrap: wrap;
+}
+.testimony .t-6,.t-5,.t-4{
+  display: none !important;
+}
+#start-all .bxs-star{
+  opacity: 0.4;
+  font-weight: bold;
+}
+#testi{
+  display: flex;
+  width: 100%;
+  box-shadow: 2px 3px 4px gray;
+  margin: 10px;
+  border-radius: 20px;
+}
+#testi .img-container{
+  width: max-content;
+  margin: 10px;
+}
+#start{
+  width: 80%;
+}
+#testi .img-container img{
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 5px;
+  border-bottom: solid var(--second) 2px;
+  border-right: solid var(--second) 2px;
+
+}
+#name-test{
+  color: gray;
+  font-family: 'Montserrat';
+  font-weight: 300;
+}
+#text-testi{
+  font-size: 13px;
+}
+
+/* ============================= */
+
+
+
+
+/* OUR COLABORATIONS */
+
+#colaboration h4{
+  font-family: 'Lato';
+  color: var(--second);
+  padding: 20px;
+  border-bottom: solid var(--second) 2px;
+  box-shadow: 2px 3px 4px gray;
+  width: max-content;
+  border-radius: 10px;
+  margin-top: 20px;
+  }
+  
+  
+  /* ========================================================= */
+  
+  
+
+
+/* ============================= */
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* FOR SCREEN  LIKE COMPUTERS  */
+
+
+@media screen and (min-width: 971px) {
+
+    /*  SEARCH AREA */
+   
+    .main-intro center h3{
+        color: var(--use);
+        font-weight: bolder;
+        font-family: 'Montserrat';
+        transform: scale(0.99);
+        animation: slideItem 0.50s linear;
+    }
+    .main-intro center p{
+        color: var(--second);
+        font-weight: 400;
+        transform: scale(0.98);
+        animation: slideItem 1s linear;
+        font-family: 'Montserrat';
+    }
+    .search-data{
+        background-color: rgba(242, 241, 241, 0.778);
+        width: fit-content;
+        padding: 5px;
+        align-items: center;
+        display: flex;
+        border-radius: 20px;
+        transition: all 0.40s;
+        width: 50%;
+        animation: slideItem 1.1s linear;
+    }
+    .search-data:hover{
+        border: solid var(--second) 1px;
+    }
+    .search-data input{
+        outline: none;
+        border: none;
+        padding: 10px;
+        border-radius: 20px;
+        background-color: transparent;
+        width: 60%;
+    }
+    .search-data button{
+        border-radius: 20px;
+        width: 30%;
+    }
+    .search-data i{
+        margin-left: 10px;
+        width: 10%;
+    }
+
+        
+      /*   ================  produits   =============== */
+  
+
+   #resultat-produit{
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+   }
+   #apart-filtre-et-addition{
+    width: 30%;
+    height: max-content;
+    align-items: center;
+   }
+   #apart-filtre-et-addition a{
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    text-align:left;
+    margin-bottom: 20px;
+    width: max-content;
+    transition: all 0.40s;
+   }
+   #apart-filtre-et-addition a p{
+    margin: 5px;
+   }
+   #apart-filtre-et-addition a:hover{
+    background-color: rgb(212, 211, 211);
+    padding: 10px;
+    border-radius: 10px;
+   }
+   #apart-filtre-et-addition a .bx{
+    color: green;
+    font-weight: bold;
+    background-color: white;
+    padding: 3px;
+   }
+   #resultat-produit #item-resultat{
+    width: 65%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:left;
+   }
+  #item-resultat a{
+    text-decoration: none;
+  }
+   .product-item {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    /* Optional: Adjust width for different layouts */
+    width: 23%;
+    height: max-content;
+    box-shadow: 2px 3px 4px gray;
+    font-size: 20px;
+    font-family: 'Montserrat';
+    cursor: pointer;
+    transition: all 0.40s;
+    text-decoration: none;
+    margin: 2px;
+}
+.product-item:hover{
+  transform: scale(0.99);
+  opacity: 0.9;
+}
+
+.product-item span{
+    color: white;
+    padding: 5px;
+    border-top-right-radius: 10px;
+    font-family: 'Montserrat' !important;
+    font-size: 13px;
+    background-color: rgba(0, 128, 0, 0.683);
+    width: max-content;
+    box-shadow: 2px 3px 4px gray;
+}
+
+.product-item img {
+    width: 100%;
+    height: 180px; /* Adjust image height as needed */
+    object-fit: cover;
+    margin-bottom: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.product-item .product-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 15px;
+    color: gray;
+}
+
+.product-item .product-price {
+     color: var(--second);
+     font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 0;
+}
+
+
+   /* =============================================== */
+
+
+
+
+   .our-work{
+    position: relative;
+  }
+
+  .our-work .images-our-work{
+    padding: 10px;
+    width: 100%;
+    padding-bottom: 30px;
+  }
+  .our-work h2{
+    margin: 20px;
+  }
+  .our-work h2 #one-our{
+    font-family: 'Gill Sans', 'Gill Sans MT';
+    color: var(--second);
+    font-weight: bold;
+    box-shadow: 3px 5px 3px;
+  
+  }
+  .our-work h2 #two-our{
+    font-family: 'Montserrat';
+    color: var(--third);
+    box-shadow: 3px 5px 3px;
+    
+  }
+  .our-work .images-our-work img{
+    width: 60%;
+    height: 200px;
+    object-fit: cover;
+  }
+  #img-our-work-1,#img-our-work-2,#img-our-work-3,#img-our-work-4{
+    position: absolute;
+  }
+  #img-our-work-1{
+    margin-left: 10px;
+    margin-top: 10px;
+    border-top-left-radius: 20px;
+    border-left: solid var(--third);
+    box-shadow: 2px 3px 4px;
+    animation: slideItem 10s;
+
+  }
+  #img-our-work-2{
+    margin-left: 30px;
+    margin-top: 40px;
+    box-shadow: 2px 3px 4px;
+    border-top-left-radius: 20px;
+    animation: slideItem 10s;
+
+  }
+  #img-our-work-3{
+    margin-left: 60px;
+    margin-top: 60px;
+    box-shadow: 2px 3px 4px;
+    border-top-left-radius: 20px;
+    animation: slideItem 10s;
+
+  }
+  #img-our-work-4{
+    margin-left: 90px;
+    margin-top: 90px;
+    border-bottom-right-radius: 20px;
+    border-right: solid var(--second);
+    box-shadow: 2px 3px 4px;
+    animation: slideItem 10s;
+  }
+ 
+  .our-work .our-work-text{
+    position: relative;
+    margin-top: 280px;
+    animation: slideItem 10s;
+    padding: 10px;
+    font-family: 'Montserrat';
+  }
+
+ /* ================================================= */
+
+
+
+
+/* work  */
+
+.section-title {
+  font-size: 36px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 50px;
+  text-align: center;
+}
+.work-item {
+  background-color: #fff;
+  padding: 20px;
+  margin-bottom: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+.work-item img{
+  width: 100%;
+  height: 200px;
+  object-fit:cover;
+  object-position: center;
+}
+.work-item h3 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 15px;
+}
+.work-item p {
+  font-size: 16px;
+  color: #666;
+}
+
+.company-logo {
+  max-width: 100px;
+  margin: 0 auto;
+  display: block;
+}
+.star {
+  color: #FFD700;
+}
+@keyframes slide {
+  0% {left: 100%;}
+  100% {left: -100%;}
+}
+
+
+/* tetsimony */
+.testimony{
+  display: flex;
+  flex-wrap: wrap;
+}
+#start-all .bxs-star{
+  opacity: 0.4;
+  font-weight: bold;
+}
+#testi{
+  display: flex;
+  width: 43%;
+  box-shadow: 2px 3px 4px gray;
+  margin: 10px;
+  border-radius: 20px;
+}
+#testi .img-container{
+  width: max-content;
+  margin: 10px;
+}
+#start{
+  width: 80%;
+}
+#testi .img-container img{
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 5px;
+  border-bottom: solid var(--second) 2px;
+  border-right: solid var(--second) 2px;
+
+}
+#name-test{
+  color: gray;
+  font-family: 'Montserrat';
+  font-weight: 300;
+}
+#text-testi{
+  font-size: 13px;
+}
+
+/* ============================= */
+
+
+/* OUR COLABORATIONS */
+
+#colaboration h4{
+font-family: 'Lato';
+color: var(--second);
+padding: 20px;
+border-bottom: solid var(--second) 2px;
+box-shadow: 2px 3px 4px gray;
+width: max-content;
+border-radius: 10px;
+margin-top: 20px;
+}
+
+
+/* ========================================================= */
+
+
+
+}

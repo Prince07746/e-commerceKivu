@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="/javascript/chart.js"></script>
+    <script src="/external/bootstrap.bundle.js"></script>
+    <script src="/external/bootstrap.css"></script>
+    <script src="/javascript/comon1.js"></script>
+
+
+    
+    <link rel="stylesheet" href="/external/bootstrap.css">
+    <link href='/boxicons/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="/css/style.css">
+
+
+</head>
+<body>
+
+
+
+  <nav class="navbar navbar-expand-lg navbar-dark" id="navbar-main" style="background-color: black;">
+    <a class="navbar-brand" href="/">
+      <img src="/images/logo3.png" alt="Bootstrap" width="140" height="145">
+    </a>
+
+    <button class="navbar-toggler" type="button" id="button-menu" >
+      <span class="navbar-toggler-icon" id="icon-m"></span>
+      
+    </button>
+
+
+
+    <div id="utilisateur-item">
+        <a href="/panier" type="button" class="btn btn-primary btn-sm position-relative">
+            <i class='bx bx-cart-add' ></i>
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+              +<span>5</span>
+            </span>
+        </a>
+    
+        <a href="/<%= log1Info %>" id="utilisateur"><i class='<%= logInfo %>'></i></a>
+        </div>
+
+  </nav>
+
+  <section class="menu-bar" id="menu-bar">
+    <a href="/item/classifier/Immobilier">
+      <ul>
+        <li><i class='bx bxs-institution'></i></li>
+        <li>Immobilier</li>
+      </ul>
+    </a>
+    <a href="/item/classifier/Meuble">
+      <ul>
+        <li><i class='bx bxs-fridge'></i></li>
+        <li>Meuble</li>
+      </ul>
+    </a>
+    <a href="/item/classifier/Apareile">
+      <ul>
+        <li><i class='bx bx-tv'></i></li>
+        <li>Apareille</li>
+      </ul>
+    </a>
+    <a href="/moi">
+      <ul>
+        <li><i class='bx bx-user-circle'></i></li>
+        <li>Mon compte</li>
+      </ul>
+    </a>
+    <a href="/panier">
+        <ul>
+          <li><i class='bx bx-cart-add' ></i></li>
+          <li>Pagner <span class="badge text-bg-danger" style="color: white; background-color:#e13a0d;">+3</span></li>
+          
+        </ul>
+      </a>
+      <a href="/<%= log1Info %>">
+        <ul>
+          <li class='<%= logInfo %>' style="font-size: 30px; margin-bottom: 10px"></li>
+        </ul>
+      </a>
+  
+
+  </section>
+
+
+<nav id="navigation-bar-phone">
+
+<div id="phone-nav" class="ph">
+  <a href="/item/classifier/Immobilier">Immobilier</a>
+  <i class='bx bxs-institution'></i>
+</div>
+<div id="phone-nav" class="ph">
+  <a href="/item/classifier/Meuble">meuble</a>
+  <i class='bx bxs-fridge'></i>
+</div>
+<div id="phone-nav" type="button" class="btn btn-primary menu-principal" data-toggle="modal" data-target="#unique-menuModal">
+  <a >Menu</a>
+  <i class='bx bx-plus'></i>
+</div>
+<div id="phone-nav" class="ph">
+  <a href="/item/classifier/Apareile">Apareille</a>
+  <i class='bx bx-tv'></i>
+</div>
+<div id="phone-nav" class="ph">
+  <a href="/moi"><b>Moi</b></a>
+  <i class='bx bx-user-circle'></i>
+</div>
+
+</nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+    /*  FOR SCREEN LIKE PHONES , TABLET */
+@media screen and (max-width: 970px) {
+   
+    #termsEtcondition{
+        padding: 10px;
+        font-family: 'Montserrat';
+    } 
+    .accordion-button{
+        border: none;
+        font-size: 19px;
+        padding: 10px;
+        border-right: solid rgba(23, 137, 236, 0.115);
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+    }
+
+}
+
+/* FOR SCREEN  LIKE COMPUTERS  */
+
+
+@media screen and (min-width: 971px) {
+    #termsEtcondition{
+        padding: 10px;
+        font-family: 'Montserrat';
+        margin-top: 20vh;
+    } 
+    .accordion-button{
+        border: none;
+        font-size: 19px;
+        padding: 10px;
+        border-right: solid rgba(23, 137, 236, 0.115);
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+    }
+
+}
+</style>
+
+<section id="termsEtcondition">
+
+  <center>
+    <h4>Cookie et police</h4>
+   </center>
+  <div class="container mt-5">
+    <div class="accordion accordion-flush" id="accordionCookies">
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+            1. Acceptance of Cookies
+          </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse" aria-labelledby="headingOne" data-bs-parent="#accordionCookies">
+          <div class="accordion-body">
+            <p>By using our website, you consent to the use of cookies in accordance with this Cookies Policy.</p>
+            <p>En utilisant notre site web, vous consentez à l'utilisation de cookies conformément à cette politique en matière de cookies.</p>
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            2. What are Cookies?
+          </button>
+        </h2>
+        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionCookies">
+          <div class="accordion-body">
+            <p>Cookies are small pieces of data stored on your device (computer or mobile device) when you browse websites.</p>
+            <p>Les cookies sont de petits fichiers de données stockés sur votre appareil (ordinateur ou appareil mobile) lorsque vous naviguez sur des sites web.</p>
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            3. How We Use Cookies
+          </button>
+        </h2>
+        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionCookies">
+          <div class="accordion-body">
+            <p>We use cookies to personalize content, provide social media features, analyze our traffic, and improve our website performance.</p>
+            <p>Nous utilisons des cookies pour personnaliser le contenu, fournir des fonctionnalités de médias sociaux, analyser notre trafic et améliorer les performances de notre site web.</p>
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+            4. Managing Cookies
+          </button>
+        </h2>
+        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionCookies">
+          <div class="accordion-body">
+            <p>You can manage cookies through your browser settings. Please note that disabling cookies may affect your experience on our website.</p>
+            <p>Vous pouvez gérer les cookies via les paramètres de votre navigateur. Veuillez noter que la désactivation des cookies peut affecter votre expérience sur notre site web.</p>
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+            5. Changes to This Policy
+          </button>
+        </h2>
+        <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionCookies">
+          <div class="accordion-body">
+            <p>We reserve the right to modify or replace this Cookies Policy at any time. Any changes will be effective immediately upon posting the updated policy on our website.</p>
+            <p>Nous nous réservons le droit de modifier ou de remplacer cette politique en matière de cookies à tout moment. Tous les changements seront effectifs dès la publication de la politique mise à jour sur notre site web.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+   
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<footer>
+  <section id="footer-content">
+    <div class="content">
+      <div id="logo-company">
+        <img src="/images/logo3.png" style="width: 100px; height:auto; border-radius: 10px;">
+      </div>
+      
+      <div id="company">
+        <h4>Company</h4>
+        <div id="link-company">
+          <a href="/apropos">About</a>
+          <a href="">Careers</a>
+          <a href="">Products</a>
+          <a href="">Countries</a>
+        </div>
+      </div>
+      
+      <div id="company">
+        <h4>Immeuble & mobilier</h4>
+        <div id="link-company">
+          <a href="/item/classifier/Immobilier/Parcelle">Parcelle</a>
+          <a href="/item/classifier/Immobilier/Maison">Maison</a>
+          <a href="/item/classifier/Immobilier/Maison_a_louer">Maison à louer</a>
+          <a href="/item/classifier/Immobilier/Vila">Vila</a>
+          <a href="/item/classifier/Meuble/Salon">Salon</a>
+          <a href="/item/classifier/Meuble/Cuisine">Cuisine</a>
+          <a href="/item/classifier/Meuble/Bureau">Bureau</a>
+          <a href="/item/classifier/Meuble/Sport">Sport</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="service">
+      <section id="services-given">
+        <div id="services-list">
+          <h4>Appareille</h4>
+          <div id="link-company">
+           <a href="/item/classifier/Apareille/Laptops">Laptops</a>
+<a href="/item/classifier/Apareille/Telephone">Telephone</a>
+<a href="/item/classifier/Apareille/Accessoire">Accessoire</a>
+<a href="/item/classifier/Apareille/Camera">Camera</a>
+<a href="/item/classifier/Apareille/Drone">Drone</a>
+<a href="/item/classifier/Apareille/Appareille_de_Reseaux">Appareille de Reseaux</a>
+<a href="/item/classifier/Apareille/PC">PC</a>
+<a href="/item/classifier/Apareille/Routeur">Routeur</a>
+<a href="/item/classifier/Apareille/Switch">Switch</a>
+</div>
+</div>
+</section>
+
+<section id="services-given">
+<div id="services-list">
+<h4>Auto</h4>
+<div id="link-company">
+<a href="/item/classifier/Automobile/Voiture">Voiture</a>
+<a href="/item/classifier/Automobile/Bus">Bus</a>
+<a href="/item/classifier/Automobile/Moto">Moto</a>
+<a href="/item/classifier/Automobile/Velo">Velo</a>
+<a href="/item/classifier/Automobile/Piece_detacher">Piece détachée</a>
+<a href="/item/classifier/Automobile/Europe">Europe</a>
+<a href="/item/classifier/Automobile/Amerique">Amérique</a>
+</div>
+</div>
+</section>
+</div>
+</section>
+
+<div class="down-content">
+<div class="down-A">
+  <a href="/privacy">Politique de confidentialité</a>
+<a href="/cookies">Cookie confidentialité</a>
+<a href="/terms">Termes</a>
+<a href="/apropos">A propos</a>
+</div>
+
+<div class="down-B">
+<p style="color:red">Made with ATOM TECH ♥</p>
+</div>
+</div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  
+</script>
+</body>
+</html>

@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="/javascript/chart.js"></script>
+    <script src="/external/bootstrap.bundle.js"></script>
+    <script src="/javascript/comon1.js"></script>
+
+
+    
+    <link rel="stylesheet" href="/external/bootstrap.css">
+    <link href='/boxicons/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/home.css">
+
+
+
+</head>
+<body>
+
+
+  <nav class="navbar navbar-expand-lg navbar-dark" id="navbar-main" style="background-color: black; transition: all 1s;">
+    <a class="navbar-brand" href="/">
+      <img src="/images/logo3.png" alt="Bootstrap" width="140" height="145">
+    </a>
+
+    <button class="navbar-toggler" type="button" id="button-menu" >
+      <span class="navbar-toggler-icon" id="icon-m"></span>
+      
+    </button>
+
+
+
+    <div id="utilisateur-item">
+        <a href="/panier" type="button" class="btn btn-primary btn-sm position-relative">
+            <i class='bx bx-cart-add' ></i>
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+              +<span>5</span>
+            </span>
+        </a>
+    
+        <a href="/<%= log1Info %>" id="utilisateur"><i class='<%= logInfo %>'></i></a>
+        </div>
+
+  </nav>
+
+  <section class="menu-bar" id="menu-bar">
+    <a href="/item/classifier/Immobilier">
+      <ul>
+        <li><i class='bx bxs-institution'></i></li>
+        <li>Immobilier</li>
+      </ul>
+    </a>
+    <a href="/item/classifier/Meuble">
+      <ul>
+        <li><i class='bx bxs-fridge'></i></li>
+        <li>Meuble</li>
+      </ul>
+    </a>
+    <a href="/item/classifier/Apareile">
+      <ul>
+        <li><i class='bx bx-tv'></i></li>
+        <li>Apareille</li>
+      </ul>
+    </a>
+    <a href="/moi">
+      <ul>
+        <li><i class='bx bx-user-circle'></i></li>
+        <li>Mon compte</li>
+      </ul>
+    </a>
+    <a href="/panier">
+        <ul>
+          <li><i class='bx bx-cart-add' ></i></li>
+          <li>Pagner <span class="badge text-bg-danger" style="color: white; background-color:#e13a0d;">+3</span></li>
+          
+        </ul>
+      </a>
+      <a href="/<%= log1Info %>">
+        <ul>
+          <li class='<%= logInfo %>' style="font-size: 30px; margin-bottom: 10px"></li>
+        </ul>
+      </a>
+  
+
+  </section>
+
+
+<nav id="navigation-bar-phone">
+
+<div id="phone-nav" class="ph">
+  <a href="/item/classifier/Immobilier">Immobilier</a>
+  <i class='bx bxs-institution'></i>
+</div>
+<div id="phone-nav" class="ph">
+  <a href="/item/classifier/Meuble">meuble</a>
+  <i class='bx bxs-fridge'></i>
+</div>
+<div id="phone-nav" type="button" class="btn btn-primary menu-principal" data-toggle="modal" data-target="#unique-menuModal">
+  <a >Menu</a>
+  <i class='bx bx-plus'></i>
+</div>
+<div id="phone-nav" class="ph">
+  <a href="/item/classifier/Apareile">Apareille</a>
+  <i class='bx bx-tv'></i>
+</div>
+<div id="phone-nav" class="ph">
+  <a href="/moi"><b>Moi</b></a>
+  <i class='bx bx-user-circle'></i>
+</div>
+
+</nav>
+
+
+
+
+
+
+
+<div id="unique-menu-container">
+  <!-- Modal -->
+  <div class="modal fade" id="unique-menuModal" tabindex="-1" role="dialog" aria-labelledby="unique-menuModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-fullscreen" role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="unique-menuModalLabel">Menu</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <i class='bx bx-x' style="font-size: 24px;"></i>
+                  </button>
+              </div>
+              <div class="modal-body cool-background">
+                  <div class="menu">
+                      <h3>KIVU BUSINESS AGENCE RDC</h3>
+                      <p>RCCM22-A-01550. N.impotA2210809Z. AF inpp 15040.61.idtn19-G4701-N14795J</p>
+                      <h4>Nos Services</h4>
+                      <a href="#"><i class='bx bx-cog'></i> Gestion mobiliers et immobilières</a>
+                      <a href="#"><i class='bx bx-home-alt'></i> Location des maisons, véhicule, appartements et villas</a>
+                      <a href="#"><i class='bx bx-briefcase'></i> Sous-traitance de services</a>
+                      <ul>
+                          <li><a href="#"><i class='bx bx-check'></i> Cleaners formés</a></li>
+                          <li><a href="#"><i class='bx bx-check'></i> Cuisiniers</a></li>
+                          <li><a href="#"><i class='bx bx-check'></i> Service traiteur</a></li>
+                          <li><a href="#"><i class='bx bx-check'></i> Décoration</a></li>
+                      </ul>
+                      <a href="#"><i class='bx bx-calendar'></i> Événement</a>
+                      <ul>
+                          <li><a href="#"><i class='bx bx-check'></i> Mariage</a></li>
+                          <li><a href="#"><i class='bx bx-check'></i> Anniversaire</a></li>
+                          <li><a href="#"><i class='bx bx-check'></i> Collection</a></li>
+                          <li><a href="#"><i class='bx bx-check'></i> Défense</a></li>
+                          <li><a href="#"><i class='bx bx-check'></i> Services d'accueil</a></li>
+                          <li><a href="#"><i class='bx bx-check'></i> Service des protocoles</a></li>
+                      </ul>
+                      <a href="#"><i class='bx bx-gift'></i> Service de surprise disponible</a>
+                      <a href="#"><i class='bx bx-car'></i> Formation en conduite automobile, code de la route, mécanique générale, entreprenariat, logistique humanitaire, Anglais</a>
+                      <p>Contactez-nous sur WhatsApp: <a href="https://wa.me/243977788587">+243977788587</a></p>
+
+                      <!-- Additional sections -->
+                      <h4>Immeuble & mobilier</h4>
+                      <a href="/item/classifier/Immobilier/Parcelle"><i class='bx bx-building-house'></i> Parcelle</a>
+                      <a href="/item/classifier/Immobilier/Maison"><i class='bx bx-home'></i> Maison</a>
+                      <a href="/item/classifier/Immobilier/Maison_a_louer"><i class='bx bx-key'></i> Maison à louer</a>
+                      <a href="/item/classifier/Immobilier/Vila"><i class='bx bx-home-smile'></i> Vila</a>
+                      <a href="/item/classifier/Meuble/Salon"><i class='bx bx-sofa'></i> Salon</a>
+                      <a href="/item/classifier/Meuble/Cuisine"><i class='bx bx-dish'></i> Cuisine</a>
+                      <a href="/item/classifier/Meuble/Bureau"><i class='bx bx-desk'></i> Bureau</a>
+                      <a href="/item/classifier/Meuble/Sport"><i class='bx bx-football'></i> Sport</a>
+
+                      <h4>Appareille</h4>
+                      <a href="/item/classifier/Appareille/Laptops"><i class='bx bx-laptop'></i> Laptops</a>
+                      <a href="/item/classifier/Appareille/Telephone"><i class='bx bx-phone'></i> Telephone</a>
+                      <a href="/item/classifier/Appareille/Accessoire"><i class='bx bx-headphone'></i> Accessoire</a>
+                      <a href="/item/classifier/Appareille/Camera"><i class='bx bx-camera'></i> Camera</a>
+                      <a href="/item/classifier/Appareille/Drone"><i class='bx bx-drone'></i> Drone</a>
+                      <a href="/item/classifier/Appareille/Appareille_de_Reseaux"><i class='bx bx-server'></i> Appareille de Reseaux</a>
+                      <a href="/item/classifier/Appareille/PC"><i class='bx bx-desktop'></i> PC</a>
+                      <a href="/item/classifier/Appareille/Routeur"><i class='bx bx-router'></i> Routeur</a>
+                      <a href="/item/classifier/Appareille/Switch"><i class='bx bx-transfer'></i> Switch</a>
+
+                      <h4>Auto</h4>
+                      <a href="/item/classifier/Automobile/Voiture"><i class='bx bx-car'></i> Voiture</a>
+                      <a href="/item/classifier/Automobile/Bus"><i class='bx bx-bus'></i> Bus</a>
+                      <a href="/item/classifier/Automobile/Moto"><i class='bx bx-bike'></i> Moto</a>
+                      <a href="/item/classifier/Automobile/Velo"><i class='bx bx-bicycle'></i> Velo</a>
+                      <a href="/item/classifier/Automobile/Piece_detacher"><i class='bx bx-cog'></i> Piece détachée</a>
+                      <a href="/item/classifier/Automobile/Europe"><i class='bx bx-globe'></i> Europe</a>
+                      <a href="/item/classifier/Automobile/Amerique"><i class='bx bx-globe'></i> Amérique</a>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+
+
+<section class="main-intro">
+  <center>
+    <h3>Retrouve tout </h3>
+    <p>En un seul clic et voilà ton rêve</p>
+    <div class="search-data">
+      <i class="bx bx-search"></i>
+      <input id="searchInput" type="text" placeholder="Design, code, mar...">
+      <button id="searchBtn" class="btn btn-info">Rechercher</button>
+    </div>
+  </center>
+</section>
+
+<style>
+  .bar-de-resultat {
+    margin-left: 20%;
+    margin-right: 10%;
+    width: 70%;
+    height: 400px;
+    overflow: scroll;
+    top: 25vh;
+    left: 10vh;
+    min-height: 50px;
+    background-color: white;
+    border-radius: 20px;
+    border: none;
+    z-index: 999;
+    display: none;
+    padding: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+</style>
+
+<div class="bar-de-resultat" id="results"></div>
+
+<script>
+  const searchInput = document.getElementById('searchInput');
+  const searchBtn = document.getElementById('searchBtn');
+  const resultsDiv = document.getElementById('results');
+  let debounceTimeout;
+
+  searchBtn.addEventListener('click', function() {
+    search();
+  });
+
+  searchInput.addEventListener('input', function() {
+    clearTimeout(debounceTimeout);
+    debounceTimeout = setTimeout(function() {
+      search();
+    }, 300);
+  });
+
+  async function search() {
+    const query = searchInput.value.trim();
+    if (query.length > 0) {
+      // Display loading spinner
+      resultsDiv.innerHTML = '<div class="spinner-border text-primary" role="status"><span class="sr-only">Loading...</span></div>';
+
+      // Simulate a request delay
+      setTimeout(async function() {
+        // Fetch search results (replace with your actual fetch logic)
+        const results = await fetchSearchResults(query);
+
+        // Display results
+        displayResults(results);
+      }, 1000); // Simulated delay of 1 second
+    } else {
+      // Clear results if query is empty
+      resultsDiv.innerHTML = '';
+      resultsDiv.style.display = 'none';
+    }
+  }
+
+  async function fetchSearchResults(query) {
+    // Replace this with your actual fetch logic
+    // For example, fetch data from server
+    const response = await fetch('/search', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ query })
+    });
+    const data = await response.json();
+    return data;
+  }
+
+  function displayResults(results) {
+    const resultsDiv = document.getElementById('results');
+
+    if (results.length === 0) {
+      resultsDiv.innerHTML = '<p class="text-center">Pas de résultats trouvés.</p>';
+    } else {
+      const ul = document.createElement('ul');
+      ul.classList.add('list-group', 'mb-3', 'd-flex', 'flex-wrap');
+
+      results.forEach(result => {
+        const li = document.createElement('li');
+        li.classList.add('list-group-item', 'mb-3', 'border-0', 'shadow-sm', 'rounded', 'w-20');
+        li.style.background = 'white'; // Background color
+        li.innerHTML = `
+          <h6 class="mb-1" style="font-size: 12px">${result.nom}</h6>
+          <p class="mb-1" style="font-size: 10px">Prix: ${result.prix}</p>
+          <p class="mb-1" style="font-size: 10px">Origine: ${result.origine}</p>
+          <a href="/item/${result.id}" class="btn btn-primary btn-sm">Voir plus</a>
+        `;
+        ul.appendChild(li);
+      });
+
+      resultsDiv.innerHTML = ''; // Clear previous results
+      resultsDiv.appendChild(ul);
+    }
+
+    resultsDiv.style.display = 'block'; // Display the results container
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section id="resultat-produit">
+
+<div id="apart-filtre-et-addition">
+  <div class="container">
+    <div class="accordion" id="serviceAccordion">
+        <div class="card">
+            <div class="card-header" id="headingOne">
+                <h2 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        KIVU BUSINESS AGENCE RDC
+                    </button>
+                </h2>
+            </div>
+            <h5>Tous nos service et produits</h5>
+            <button type="button" class="btn btn-primary menu-principal" data-toggle="modal" data-target="#unique-menuModal">voir nos produits</button>
+                </div>
+            </div>
+            <p>RCCM22-A-01550. N.impotA2210809Z. AF inpp 15040.61.idtn19-G4701-N14795J</p>
+            <h4>Nos Services</h4>
+            <a ><i class='bx bx-cog'></i> Gestion mobiliers et immobilières</a>
+            <a ><i class='bx bx-home-alt'></i> Location des maisons, véhicule, appartements et villas</a>
+            <a><i class='bx bx-briefcase'></i> Sous-traitance de services</a>
+        </div>
+    </div>
+</div>
+
+</div>
+
+<div id="item-resultat">
+
+  <% products.forEach(function(product) { %>
+    <a href="/item/<%= product.id %>" class="product-item">
+      <span><%= product.nom %></span> 
+      <img src="/<%= product.img_id %>/<%= product.img1 %>" alt="/<%= product.img_id %>/<%= product.img1 %>" loading="lazy">
+      <h5 class="product-title"><%= product.nom %></h5>
+      <p class="product-price"><%= product.prix %> UGX</p> 
+    </a>
+  <% }); %>
+  
+
+</div>
+      
+  
+</section>
+
+
+
+
+<section class="our-work">
+
+<h2><span id="one-our">WE MAKE</span><span id="two-our"> DREAMS COME TRUE</span></h2>
+
+<div class="images-our-work">
+  <img src="/images/images/topics/undraw_Compose_music_re_wpiw.png" loading="lazy" id="img-our-work-1">
+  <img src="/images/images/topics/undraw_happy_music_g6wc.png" loading="lazy" id="img-our-work-2">
+  <img src="/images/images/topics/undraw_Podcast_audience_re_4i5q.png"  loading="lazy" id="img-our-work-3">
+</div>
+<div class="our-work-text">
+  <p>Chez Kivu Business Agence RDC, nous nous engageons à réaliser vos rêves. Que ce soit par la gestion de vos biens mobiliers et immobiliers, la location de maisons et véhicules, ou la sous-traitance de services, nous offrons des solutions adaptées à vos besoins. Découvrez comment nous pouvons transformer vos idées en réalité.</p>
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="notre-travaille-et-temoignage-et-collaboratuer">
+
+
+  <div class="container">
+
+    <div class="testimony">
+
+      <!-- Témoignage de Jean -->
+      <div id="testi" class="t-1">
+        <div class="img-container">
+          <img src="/images/images/topics/web design.png" loading="lazy">
+        </div>
+        <div id="start">
+          <div id="start-all">
+            <i class='bx bxs-star' style='color:yellow'></i>
+            <i class='bx bxs-star' style='color:yellow'></i>
+            <i class='bx bxs-star' style='color:yellow'></i>
+            <i class='bx bxs-star' style='color:yellow'></i>
+            <i class='bx bx-star' style='color:gray'></i>
+          </div>
+          <div>
+            <p id="name-test">Jean</p>
+            <i class='bx bxl-google' style='color:#e13a0d'></i>
+            <p id="text-testi">Kivu-Business a transformé notre entreprise en ligne avec une visibilité accrue et une augmentation des ventes.</p>
+          </div>
+        </div>
+      </div>
+    
+      <!-- Témoignage de Marie -->
+      <div id="testi" class="t-2">
+        <div class="img-container">
+          <img src="/images/images/topics/web design.png" loading="lazy">
+        </div>
+        <div id="start">
+          <div id="start-all">
+            <i class='bx bxs-star' style='color:yellow'></i>
+            <i class='bx bxs-star' style='color:yellow'></i>
+            <i class='bx bxs-star' style='color:yellow'></i>
+            <i class='bx bxs-star' style='color:yellow'></i>
+            <i class='bx bxs-star-half' style='color:yellow'></i>
+          </div>
+          <div>
+            <p id="name-test">Marie</p>
+            <i class='bx bxl-facebook' style='color:#0d99e1'></i>
+            <p id="text-testi">Le service client est exceptionnel et l'équipe de Kivu-Business est toujours prête à aider.</p>
+          </div>
+        </div>
+      </div>
+    
+      <!-- Témoignage de Paul -->
+      <div id="testi" class="t-3">
+        <div class="img-container">
+          <img src="/images/images/topics/web design.png" loading="lazy">
+        </div>
+        <div id="start">
+          <div id="start-all">
+            <i class='bx bxs-star' style='color:yellow'></i>
+            <i class='bx bxs-star' style='color:yellow'></i>
+            <i class='bx bxs-star' style='color:yellow'></i>
+            <i class='bx bx-star' style='color:gray'></i>
+            <i class='bx bx-star' style='color:gray'></i>
+          </div>
+          <div>
+            <p id="name-test">Paul</p>
+            <i class='bx bxl-linkedin-square' style='color:#0d99e1'></i>
+            <p id="text-testi">Leur expertise en web design a permis de créer un site esthétique et fonctionnel.</p>
+          </div>
+        </div>
+      </div>
+    
+      <!-- Témoignage de Sarah -->
+      <div id="testi" class="t-4">
+        <div class="img-container">
+          <img src="/images/images/topics/web design.png" loading="lazy">
+        </div>
+        <div id="start">
+          <div id="start-all">
+            <i class='bx bxs-star' style='color:yellow'></i>
+            <i class='bx bxs-star' style='color:yellow'></i>
+            <i class='bx bxs-star' style='color:yellow'></i>
+            <i class='bx bxs-star' style='color:yellow'></i>
+            <i class='bx bxs-star-half' style='color:yellow'></i>
+          </div>
+          <div>
+            <p id="name-test">Sarah</p>
+            <i class='bx bxl-google' style='color:#e13a0d'></i>
+            <p id="text-testi">Je recommande fortement Kivu-Business pour leurs solutions innovantes et leur soutien continu.</p>
+          </div>
+        </div>
+      </div>
+    
+      <!-- Témoignage de Michel -->
+      <div id="testi" class="t-5">
+        <div class="img-container">
+          <img src="/images/images/topics/web design.png" loading="lazy">
+        </div>
+        <div id="start">
+          <div id="start-all">
+            <i class='bx bxs-star' style='color:yellow'></i>
+            <i class='bx bxs-star' style='color:yellow'></i>
+            <i class='bx bxs-star' style='color:yellow'></i>
+            <i class='bx bxs-star' style='color:yellow'></i>
+            <i class='bx bx-star' style='color:gray'></i>
+          </div>
+          <div>
+            <p id="name-test">Michel</p>
+            <i class='bx bxl-twitter' style='color:#0d99e1'></i>
+            <p id="text-testi">Grâce à Kivu-Business, notre présence en ligne s'est considérablement améliorée.</p>
+          </div>
+        </div>
+      </div>
+    
+      <!-- Témoignage de Laura -->
+      <div id="testi" class="t-6">
+        <div class="img-container">
+          <img src="/images/images/topics/web design.png">
+        </div>
+        <div id="start">
+          <div id="start-all">
+            <i class='bx bxs-star' style='color:yellow'></i>
+            <i class='bx bxs-star' style='color:yellow'></i>
+            <i class='bx bxs-star' style='color:yellow'></i>
+            <i class='bx bxs-star' style='color:yellow'></i>
+            <i class='bx bxs-star-half' style='color:yellow'></i>
+          </div>
+          <div>
+            <p id="name-test">Laura</p>
+            <p id="text-testi">L'équipe de Kivu-Business a été formidable, du début à la fin du projet.</p>
+          </div>
+        </div>
+      </div>
+    
+    </div>
+    
+
+
+
+
+    <center id="colaboration">
+      <h4>Our Colaborations</h4>
+    </center>
+    <div class="row mt-5">
+      <div class="col text-center mb-4">
+        <img src="/images/logos/gdp.png" alt="Company 1 Logo" class="company-logo" style="border-radius: 5%;" loading="lazy">
+      </div>
+      <div class="col text-center mb-4">
+        <img src="/images/logos/logo.png" alt="Company 2 Logo" class="company-logo" style="border-radius: 5%;" loading="lazy">
+      </div>
+      <div class="col text-center mb-4">
+        <img src="/images/logos/logos-DGI.png" alt="Company 3 Logo" class="company-logo" style="border-radius: 5%;" loading="lazy">
+      </div>
+      <div class="col text-center mb-4">
+        <img src="/images/logos/logo3.png" alt="Company 3 Logo" class="company-logo" style="border-radius: 5%;" loading="lazy">
+      </div>
+      <div class="col text-center mb-4">
+        <img src="/images/logos/microsoft.png" alt="Company 3 Logo" class="company-logo" style="border-radius: 5%;" loading="lazy">
+      </div>
+      <div class="col text-center mb-4">
+        <img src="/images/logos/un2.jpeg" alt="Company 3 Logo" class="company-logo" style="border-radius: 5%;" loading="lazy">
+      </div>
+      <div class="col text-center mb-4">
+        <img src="/images/logos/comptia.png" alt="Company 3 Logo" class="company-logo" style="border-radius: 5%;" loading="lazy">
+      </div>
+      <div class="col text-center mb-4">
+        <img src="/images/logos/cisco.jpeg" alt="Company 3 Logo" class="company-logo" style="border-radius: 5%;" loading="lazy">
+      </div>
+      <div class="col text-center mb-4">
+        <img src="/images/logos/heroku.png" alt="Company 3 Logo" class="company-logo" style="border-radius: 5%;" loading="lazy">
+      </div>
+      <div class="col text-center mb-4">
+        <img src="/images/logos/uganda.jpeg" alt="Company 3 Logo" class="company-logo" style="border-radius: 5%;" loading="lazy">
+      </div>
+      <div class="col text-center mb-4">
+        <img src="/images/logos/congo.png" alt="Company 3 Logo" class="company-logo" style="border-radius: 5%;" loading="lazy">
+      </div>
+      <div class="col text-center mb-4">
+        <img src="/images/logos/fecofa.jpeg" alt="Company 3 Logo" class="company-logo" style="border-radius: 5%;" loading="lazy">
+      </div>
+      <div class="col text-center mb-4">
+        <img src="/images/logos/makerere.jpeg" alt="Company 3 Logo" class="company-logo" style="border-radius: 5%;" loading="lazy">
+      </div>
+      <div class="col text-center mb-4">
+        <img src="/images/logos/unikin.png" alt="Company 3 Logo" class="company-logo" style="border-radius: 5%;" loading="lazy">
+      </div>
+      <div class="col text-center mb-4">
+        <img src="/images/logos/codecademy.png" alt="Company 3 Logo" class="company-logo" style="border-radius: 5%;" loading="lazy">
+      </div>
+      <div class="col text-center mb-4">
+        <img src="/images/logos/drone.png" alt="Company 3 Logo" class="company-logo" style="border-radius: 5%;" loading="lazy">
+      </div>
+      <div class="col text-center mb-4">
+        <img src="/images/logos/ali.png" alt="Company 3 Logo" class="company-logo" style="border-radius: 5%;" loading="lazy">
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<footer>
+  <section id="footer-content">
+    <div class="content">
+      <div id="logo-company">
+        <img src="/images/logo3.png" style="width: 100px; height:auto; border-radius: 10px;">
+      </div>
+      
+      <div id="company">
+        <h4>Company</h4>
+        <div id="link-company">
+          <a href="/apropos">A propos</a>
+          <a href="">Careers</a>
+          <a href="">Products</a>
+          <a href="">Countries</a>
+        </div>
+      </div>
+      
+      <div id="company">
+        <h4>Immeuble & mobilier</h4>
+        <div id="link-company">
+          <a href="/item/classifier/Immobilier/Parcelle">Parcelle</a>
+          <a href="/item/classifier/Immobilier/Maison">Maison</a>
+          <a href="/item/classifier/Immobilier/Maison_a_louer">Maison à louer</a>
+          <a href="/item/classifier/Immobilier/Vila">Vila</a>
+          <a href="/item/classifier/Meuble/Salon">Salon</a>
+          <a href="/item/classifier/Meuble/Cuisine">Cuisine</a>
+          <a href="/item/classifier/Meuble/Bureau">Bureau</a>
+          <a href="/item/classifier/Meuble/Sport">Sport</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="service">
+      <section id="services-given">
+        <div id="services-list">
+          <h4>Appareille</h4>
+          <div id="link-company">
+           <a href="/item/classifier/Apareille/Laptops">Laptops</a>
+<a href="/item/classifier/Apareille/Telephone">Telephone</a>
+<a href="/item/classifier/Apareille/Accessoire">Accessoire</a>
+<a href="/item/classifier/Apareille/Camera">Camera</a>
+<a href="/item/classifier/Apareille/Drone">Drone</a>
+<a href="/item/classifier/Apareille/Appareille_de_Reseaux">Appareille de Reseaux</a>
+<a href="/item/classifier/Apareille/PC">PC</a>
+<a href="/item/classifier/Apareille/Routeur">Routeur</a>
+<a href="/item/classifier/Apareille/Switch">Switch</a>
+</div>
+</div>
+</section>
+
+<section id="services-given">
+<div id="services-list">
+<h4>Auto</h4>
+<div id="link-company">
+<a href="/item/classifier/Automobile/Voiture">Voiture</a>
+<a href="/item/classifier/Automobile/Bus">Bus</a>
+<a href="/item/classifier/Automobile/Moto">Moto</a>
+<a href="/item/classifier/Automobile/Velo">Velo</a>
+<a href="/item/classifier/Automobile/Piece_detacher">Piece détachée</a>
+<a href="/item/classifier/Automobile/Europe">Europe</a>
+<a href="/item/classifier/Automobile/Amerique">Amérique</a>
+</div>
+</div>
+</section>
+</div>
+</section>
+
+<div class="down-content">
+<div class="down-A">
+<a href="/privacy">Politique de confidentialité</a>
+<a href="/cookies">Cookie confidentialité</a>
+<a href="/terms">Termes</a>
+<a href="/apropos">A propos</a>
+</div>
+
+<div class="down-B">
+<p style="color:red">Made with ATOM TECH ♥</p>
+</div>
+</div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  
+</script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+
+
+</body>
+</html>

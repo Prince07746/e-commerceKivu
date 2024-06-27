@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="/javascript/chart.js"></script>
+    <script src="/external/bootstrap.bundle.js"></script>
+    <script src="/javascript/comon1.js"></script>
+
+
+    
+    <link rel="stylesheet" href="/external/bootstrap.css">
+    <link href='/boxicons/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="/css/style.css">
+
+
+</head>
+<body>
+
+
+  <nav class="navbar navbar-expand-lg navbar-dark" id="navbar-main" style="background-color: black;">
+    <a class="navbar-brand" href="/">
+      <img src="/images/logo3.png" alt="Bootstrap" width="140" height="145">
+    </a>
+
+    <button class="navbar-toggler" type="button" id="button-menu" >
+      <span class="navbar-toggler-icon" id="icon-m"></span>
+      
+    </button>
+
+
+
+    <div id="utilisateur-item">
+        <a href="/panier" type="button" class="btn btn-primary btn-sm position-relative">
+            <i class='bx bx-cart-add' ></i>
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+              +<span>5</span>
+            </span>
+        </a>
+    
+        <a href="/<%= log1Info %>" id="utilisateur"><i class='<%= logInfo %>'></i></a>
+        </div>
+
+  </nav>
+
+  <section class="menu-bar" id="menu-bar">
+    <a href="/item/classifier/Immobilier">
+      <ul>
+        <li><i class='bx bxs-institution'></i></li>
+        <li>Immobilier</li>
+      </ul>
+    </a>
+    <a href="/item/classifier/Meuble">
+      <ul>
+        <li><i class='bx bxs-fridge'></i></li>
+        <li>Meuble</li>
+      </ul>
+    </a>
+    <a href="/item/classifier/Apareile">
+      <ul>
+        <li><i class='bx bx-tv'></i></li>
+        <li>Apareille</li>
+      </ul>
+    </a>
+    <a href="/item/classifier/Automobile">
+      <ul>
+        <li><i class='bx bx-car'></i></li>
+        <li>Automobile</li>
+      </ul>
+    </a>
+    <a href="/panier">
+        <ul>
+          <li><i class='bx bx-cart-add' ></i></li>
+          <li>Pagner <span class="badge text-bg-danger" style="color: white; background-color:#e13a0d;">+3</span></li>
+          
+        </ul>
+      </a>
+      <a href="/<%= log1Info %>">
+        <ul>
+          <li class='<%= logInfo %>' style="font-size: 30px; margin-bottom: 10px"></li>
+        </ul>
+      </a>
+  
+
+  </section>
+
+
+<nav id="navigation-bar-phone">
+
+<div id="phone-nav" class="ph">
+  <a href="/item/classifier/Immobilier">Immobilier</a>
+  <i class='bx bxs-institution'></i>
+</div>
+<div id="phone-nav" class="ph">
+  <a href="/item/classifier/Meuble">meuble</a>
+  <i class='bx bxs-fridge'></i>
+</div>
+<div id="phone-nav" class="menu-principal">
+  <a href="">Menu</a>
+  <i class='bx bx-plus'></i>
+</div>
+<div id="phone-nav" class="ph">
+  <a href="/item/classifier/Apareile">Apareille</a>
+  <i class='bx bx-tv'></i>
+</div>
+<div id="phone-nav" class="ph">
+  <a href="/item/classifier/Automobile">Auto</a>
+  <i class='bx bx-car'></i>
+</div>
+
+
+</nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+    /*  FOR SCREEN LIKE PHONES , TABLET */
+@media screen and (max-width: 970px) {
+   #resultat{
+    margin-top: 5vh;
+    padding: 10px;
+    font-family: 'Montserrat';
+   }
+   .section-heading {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+.icon {
+    font-size: 48px;
+    color: #007bff;
+}
+.contact-form {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+
+}
+.company-logo {
+    max-width: 50px;
+    margin: 0 auto;
+    display: block;
+  }
+
+
+}
+
+/* FOR SCREEN  LIKE COMPUTERS  */
+
+
+@media screen and (min-width: 971px) {
+    #resultat{
+        margin-top: 20vh;
+        padding: 10px;
+        font-family: 'Montserrat';
+       }
+       .section-heading {
+        font-size: 36px;
+        font-weight: bold;
+        margin-bottom: 30px;
+    }
+    .icon {
+        font-size: 48px;
+        color: #007bff;
+    }
+    .contact-form {
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+
+    }
+    .company-logo {
+        max-width: 100px;
+        margin: 0 auto;
+        display: block;
+      }
+     
+}
+</style>
+
+
+
+
+
+
+
+
+
+
+<section id="resultat">
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-lg-6">
+                <h2 class="section-heading animated fadeInUp">À Propos de KIVU BUSINESS</h2>
+                <p class="animated fadeInUp">KIVU BUSINESS est une plateforme de commerce électronique basée à Goma. Nous nous efforçons de fournir une expérience de magasinage en ligne fluide à nos clients.</p>
+                <p class="animated fadeInUp">Notre mission est de livrer des produits de haute qualité à votre porte de manière efficace et abordable.</p>
+                <p class="animated fadeInUp">Chez KIVU BUSINESS, la satisfaction du client est notre priorité absolue. Que vous préfériez faire des achats en ligne ou visiter notre magasin physique, nous sommes là pour vous aider.</p>
+                <p class="animated fadeInUp">N'hésitez pas à explorer notre site web et à découvrir une large gamme de produits adaptés à vos besoins.</p>
+            </div>
+            <div class="col-lg-6">
+                <div class="contact-form animated fadeInRight">
+                    <h2 class="section-heading">Contactez-nous</h2>
+                    <form action="/message/AB" method="post">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Votre Nom" name="nom" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Votre Adresse Email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" rows="4" placeholder="Votre Message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Envoyer le Message</button>
+                    </form>
+                    <p class="mt-3">Alternativement, vous pouvez nous contacter via WhatsApp au <a href="tel:+1234567890">+1234567890</a> pour toute question sur les produits ou visiter notre magasin.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Partners Section -->
+        <div class="row mt-5">
+            <div class="col-lg-12">
+                <h2 class="section-heading animated fadeInLeft">Nos Partenaires</h2>
+                <p class="animated fadeInLeft">Nous travaillons en étroite collaboration avec des partenaires de confiance pour offrir à nos clients une expérience exceptionnelle.</p>
+                <!-- Add your partner logos here -->
+     <section>           
+    <center id="colaboration">
+      <h4>Our Colaborations</h4>
+    </center>
+    <div class="row mt-5">
+      <div class="col text-center mb-4">
+        <img src="/images/logos/gdp.png" alt="Company 1 Logo" class="company-logo" style="border-radius: 5%;" loading="lazy">
+      </div>
+      <div class="col text-center mb-4">
+        <img src="/images/logos/logo.png" alt="Company 2 Logo" class="company-logo" style="border-radius: 5%;" loading="lazy">
+      </div>
+      <div class="col text-center mb-4">
+        <img src="/images/logos/logos-DGI.png" alt="Company 3 Logo" class="company-logo" style="border-radius: 5%;" loading="lazy">
+      </div>
+      <div class="col text-center mb-4">
+        <img src="/images/logos/logo3.png" alt="Company 3 Logo" class="company-logo" style="border-radius: 5%;" loading="lazy">
+      </div>
+      <div class="col text-center mb-4">
+        <img src="/images/logos/microsoft.png" alt="Company 3 Logo" class="company-logo" style="border-radius: 5%;" loading="lazy">
+      </div>
+      <div class="col text-center mb-4">
+        <img src="/images/logos/un2.jpeg" alt="Company 3 Logo" class="company-logo" style="border-radius: 5%;" loading="lazy">
+      </div>
+      <div class="col text-center mb-4">
+        <img src="/images/logos/comptia.png" alt="Company 3 Logo" class="company-logo" style="border-radius: 5%;" loading="lazy">
+      </div>
+      <div class="col text-center mb-4">
+        <img src="/images/logos/cisco.jpeg" alt="Company 3 Logo" class="company-logo" style="border-radius: 5%;" loading="lazy">
+      </div>
+      <div class="col text-center mb-4">
+        <img src="/images/logos/heroku.png" alt="Company 3 Logo" class="company-logo" style="border-radius: 5%;" loading="lazy">
+      </div>
+      <div class="col text-center mb-4">
+        <img src="/images/logos/uganda.jpeg" alt="Company 3 Logo" class="company-logo" style="border-radius: 5%;" loading="lazy">
+      </div>
+      <div class="col text-center mb-4">
+        <img src="/images/logos/congo.png" alt="Company 3 Logo" class="company-logo" style="border-radius: 5%;" loading="lazy">
+      </div>
+      <div class="col text-center mb-4">
+        <img src="/images/logos/fecofa.jpeg" alt="Company 3 Logo" class="company-logo" style="border-radius: 5%;" loading="lazy">
+      </div>
+      <div class="col text-center mb-4">
+        <img src="/images/logos/makerere.jpeg" alt="Company 3 Logo" class="company-logo" style="border-radius: 5%;" loading="lazy">
+      </div>
+      <div class="col text-center mb-4">
+        <img src="/images/logos/unikin.png" alt="Company 3 Logo" class="company-logo" style="border-radius: 5%;" loading="lazy">
+      </div>
+      <div class="col text-center mb-4">
+        <img src="/images/logos/codecademy.png" alt="Company 3 Logo" class="company-logo" style="border-radius: 5%;" loading="lazy">
+      </div>
+      <div class="col text-center mb-4">
+        <img src="/images/logos/drone.png" alt="Company 3 Logo" class="company-logo" style="border-radius: 5%;" loading="lazy">
+      </div>
+      <div class="col text-center mb-4">
+        <img src="/images/logos/ali.png" alt="Company 3 Logo" class="company-logo" style="border-radius: 5%;" loading="lazy">
+      </div>
+    </section>
+            </div>
+        </div>
+
+        <!-- What We Do Section -->
+        <div class="row mt-5">
+            <div class="col-lg-12">
+                <h2 class="section-heading animated fadeInRight">Ce Que Nous Faisons</h2>
+                <p class="animated fadeInRight">Nous proposons une large gamme de produits de haute qualité, allant des produits électroniques aux produits de beauté.</p>
+                <p class="animated fadeInRight">Notre équipe travaille sans relâche pour garantir la disponibilité des produits et assurer une livraison rapide à nos clients.</p>
+            </div>
+        </div>
+
+        <!-- How We Do It Section -->
+        <div class="row mt-5">
+            <div class="col-lg-12">
+                <h2 class="section-heading animated fadeInLeft">Comment Nous le Faisons</h2>
+                <p class="animated fadeInLeft">Nous nous engageons à fournir des produits de qualité supérieure en collaborant avec des fournisseurs de confiance et en effectuant des contrôles de qualité rigoureux.</p>
+                <p class="animated fadeInLeft">Notre processus de commande est simple et sécurisé, garantissant une expérience sans tracas pour nos clients.</p>
+            </div>
+        </div>
+
+        <!-- What We Have Done Section -->
+        <div class="row mt-5">
+            <div class="col-lg-12">
+                <h2 class="section-heading animated fadeInRight">Ce Que Nous Avons Réalisé</h2>
+                <p class="animated fadeInRight">Au fil des ans, nous avons servi des milliers de clients satisfaits et établi des relations solides avec notre communauté.</p>
+                <p class="animated fadeInRight">Nous continuerons à nous efforcer de fournir des produits et services exceptionnels à nos clients fidèles.</p>
+            </div>
+        </div>
+    </div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<footer>
+  <section id="footer-content">
+    <div class="content">
+      <div id="logo-company">
+        <img src="/images/logo3.png" style="width: 100px; height:auto; border-radius: 10px;">
+      </div>
+      
+      <div id="company">
+        <h4>Company</h4>
+        <div id="link-company">
+          <a href="/apropos">About</a>
+          <a href="">Careers</a>
+          <a href="">Products</a>
+          <a href="">Countries</a>
+        </div>
+      </div>
+      
+      <div id="company">
+        <h4>Immeuble & mobilier</h4>
+        <div id="link-company">
+          <a href="/item/classifier/Immobilier/Parcelle">Parcelle</a>
+          <a href="/item/classifier/Immobilier/Maison">Maison</a>
+          <a href="/item/classifier/Immobilier/Maison_a_louer">Maison à louer</a>
+          <a href="/item/classifier/Immobilier/Vila">Vila</a>
+          <a href="/item/classifier/Meuble/Salon">Salon</a>
+          <a href="/item/classifier/Meuble/Cuisine">Cuisine</a>
+          <a href="/item/classifier/Meuble/Bureau">Bureau</a>
+          <a href="/item/classifier/Meuble/Sport">Sport</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="service">
+      <section id="services-given">
+        <div id="services-list">
+          <h4>Appareille</h4>
+          <div id="link-company">
+           <a href="/item/classifier/Apareille/Laptops">Laptops</a>
+<a href="/item/classifier/Apareille/Telephone">Telephone</a>
+<a href="/item/classifier/Apareille/Accessoire">Accessoire</a>
+<a href="/item/classifier/Apareille/Camera">Camera</a>
+<a href="/item/classifier/Apareille/Drone">Drone</a>
+<a href="/item/classifier/Apareille/Appareille_de_Reseaux">Appareille de Reseaux</a>
+<a href="/item/classifier/Apareille/PC">PC</a>
+<a href="/item/classifier/Apareille/Routeur">Routeur</a>
+<a href="/item/classifier/Apareille/Switch">Switch</a>
+</div>
+</div>
+</section>
+
+<section id="services-given">
+<div id="services-list">
+<h4>Auto</h4>
+<div id="link-company">
+<a href="/item/classifier/Automobile/Voiture">Voiture</a>
+<a href="/item/classifier/Automobile/Bus">Bus</a>
+<a href="/item/classifier/Automobile/Moto">Moto</a>
+<a href="/item/classifier/Automobile/Velo">Velo</a>
+<a href="/item/classifier/Automobile/Piece_detacher">Piece détachée</a>
+<a href="/item/classifier/Automobile/Europe">Europe</a>
+<a href="/item/classifier/Automobile/Amerique">Amérique</a>
+</div>
+</div>
+</section>
+</div>
+</section>
+
+<div class="down-content">
+<div class="down-A">
+  <a href="/privacy">Politique de confidentialité</a>
+<a href="/cookies">Cookie confidentialité</a>
+<a href="/terms">Termes</a>
+<a href="/apropos">A propos</a>
+</div>
+
+<div class="down-B">
+<p style="color:red">Made with ATOM TECH ♥</p>
+</div>
+</div>
+</footer>
+
+
+
+
+
+
+
+
+<script>
+  
+</script>
+</body>
+</html>

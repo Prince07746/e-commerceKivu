@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .dashboard {
+            padding: 20px;
+        }
+        .form-control, .btn {
+            margin-bottom: 15px;
+        }
+        .card-header {
+            background-color: #007bff;
+            color: white;
+        }
+        .card-body {
+            background-color: #ffffff;
+        }
+        .form-label {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid dashboard">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-user-shield"></i> Admin Menu
+                    </div>
+                    <div class="card-body">
+                        <ul class="nav flex-column">
+                            <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                            <li class="nav-item" style="background-color: gray; color: white; border-radius: 10px; "><a class="nav-link" href="/admin/ajouteProduit" style="color: white"><i class="fas fa-box"></i> Produit</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/admin/ajouteUtilisateur"><i class="fas fa-users"></i> Utillisateur</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-cogs"></i> Settings</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-box"></i> Add / Edit Product
+                    </div>
+                    <div class="card-body">
+                        <form action="/add-product" method="POST" enctype="multipart/form-data">
+                            <div class="mb-3">
+                              <label for="productId" class="form-label">ID</label>
+                              <input type="text" class="form-control" name="productId" value="3" readonly>
+                            </div>
+                            <div class="mb-3">
+                              <label for="productName" class="form-label">Nom</label>
+                              <input type="text" class="form-control" name="productName" value="Produit 3">
+                            </div>
+                            <div class="mb-3">
+                              <label for="productDescription" class="form-label">Description</label>
+                              <textarea class="form-control" name="productDescription" rows="3">Description du produit 3</textarea>
+                            </div>
+                            <div class="mb-3">
+                              <label for="productPrice" class="form-label">Prix</label>
+                              <input type="text" class="form-control" name="productPrice" value="39.99">
+                            </div>
+                            <div class="mb-3">
+                              <label for="productStock" class="form-label">Stock</label>
+                              <input type="text" class="form-control" name="productStock" value="75">
+                            </div>
+                            <div class="mb-3">
+                              <label for="productLink" class="form-label">Lien</label>
+                              <input type="url" class="form-control" name="productLink" value="https://whatsapp.com/produit3">
+                            </div>
+                            <div class="mb-3">
+                              <label for="productColor" class="form-label">Couleur</label>
+                              <input type="text" class="form-control" name="productColor" value="Vert">
+                            </div>
+                            <div class="mb-3">
+                              <label for="productBrand" class="form-label">Marque</label>
+                              <input type="text" class="form-control" name="productBrand" value="Marque Z">
+                            </div>
+                            <div class="mb-3">
+                              <label for="productType" class="form-label">Type</label>
+                              <input type="text" class="form-control" name="productType" value="meuble">
+                            </div>
+                            <div class="mb-3">
+                              <label for="productCondition" class="form-label">Conditions</label>
+                              <input type="text" class="form-control" name="productCondition" value="Reconditionné">
+                            </div>
+                            <div class="mb-3">
+                              <label for="productSubType" class="form-label">Sous-type</label>
+                              <input type="text" class="form-control" name="productSubType" value="Type 3">
+                            </div>
+                            <div class="mb-3">
+                              <label for="productWarranty" class="form-label">Garantie</label>
+                              <input type="text" class="form-control" name="productWarranty" value="Garantie de trois ans">
+                            </div>
+                            <div class="mb-3">
+                              <label for="productOrigin" class="form-label">Origine</label>
+                              <input type="text" class="form-control" name="productOrigin" value="Fabriqué en Allemagne">
+                            </div>
+                            <div class="mb-3">
+                              <label for="productCapacity" class="form-label">Capacity</label>
+                              <input type="text" class="form-control" name="productCapacity" value="10 kg">
+                            </div>
+                            <div class="mb-3">
+                              <label for="productImageSrc" class="form-label">Image Source</label>
+                              <input type="url" class="form-control" name="productImageSrc" value="https://exemple.com/produit3.jpg">
+                            </div>
+                            <div class="mb-3">
+                              <label for="productImageId" class="form-label">Image ID</label>
+                              <input type="text" class="form-control" name="productImageId" value="image_produit3">
+                            </div>
+                            <div class="mb-3">
+                              <label for="productCreated" class="form-label">Créé le</label>
+                              <input type="datetime-local" class="form-control" name="productCreated">
+                            </div>
+                            <div class="mb-3">
+                              <label for="productModified" class="form-label">Modifié le</label>
+                              <input type="datetime-local" class="form-control" name="productModified">
+                            </div>
+                            <div class="mb-3">
+                              <label for="productImages" class="form-label">Image 1</label>
+                              <input type="file" class="form-control" name="productImages">
+                            </div>
+                            <div class="mb-3">
+                              <label for="productImages" class="form-label">Image 2</label>
+                              <input type="file" class="form-control" name="productImages">
+                            </div>
+                            <div class="mb-3">
+                              <label for="productImages" class="form-label">Image 3</label>
+                              <input type="file" class="form-control" name="productImages">
+                            </div>
+                            <div class="mb-3">
+                              <label for="productImages" class="form-label">Image 4</label>
+                              <input type="file" class="form-control" name="productImages">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Save</button>
+                          </form>
+                          
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <center>
+      <h4>Tout le produit (modifie , effacer) </h4>
+    </center>
+    <div class="card-body" style="max-height: 400px; overflow-y: scroll; display:flex; justify-content: space-around; flex-wrap: wrap; transform: scale(0.9)">
+      <!-- List of products -->
+      
+      <% let currentLetter = ''; %>
+      <% products.forEach(function(product) { %>
+        <% const firstLetter = product.nom.charAt(0).toUpperCase(); %>
+        <% if (firstLetter !== currentLetter) { %>
+          <!-- Section header for current letter -->
+          <h3 style="width:100%; color:orange; font-weight:bold">&nbsp;&nbsp;&nbsp;&nbsp;<%= firstLetter %></h3>
+          <% currentLetter = firstLetter; %>
+        <% } %>
+       
+    
+        <div class="card mb-3" style="width: 30%;">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-8">
+                <h5 class="card-title"><%= product.nom %></h5>
+                <p class="card-text">Price: UGX <%= product.prix %></p>
+                <p class="card-text">
+                  <%= product.description.length > 100 ? `${product.description.slice(0, 100)}...` : product.description %>
+                </p>
+              </div>
+              <div class="col-md-4">
+                <a href="/admin/editProduit/<%= product.id %>" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i> Edit</a>
+                <a href="/admin/deleteProduit/<%= product.id %>" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i> Delete</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% }); %>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

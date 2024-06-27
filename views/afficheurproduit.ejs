@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="/javascript/chart.js"></script>
+    <script src="/external/bootstrap.bundle.js"></script>
+    <script src="/javascript/comon1.js"></script>
+
+
+    
+    <link rel="stylesheet" href="/external/bootstrap.css">
+    <link href='/boxicons/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/affichange.css">
+
+
+</head>
+<body>
+
+
+  <nav class="navbar navbar-expand-lg navbar-dark" id="navbar-main" style="background-color: black;">
+    <a class="navbar-brand" href="/">
+      <img src="/images/logo3.png" alt="Bootstrap" width="140" height="145">
+    </a>
+
+    <button class="navbar-toggler" type="button" id="button-menu" >
+      <span class="navbar-toggler-icon" id="icon-m"></span>
+      
+    </button>
+
+
+
+    <div id="utilisateur-item">
+        <a href="/panier" type="button" class="btn btn-primary btn-sm position-relative">
+            <i class='bx bx-cart-add' ></i>
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+              +<span>5</span>
+            </span>
+        </a>
+    
+        <a href="/<%= log1Info %>" id="utilisateur"><i class='<%= logInfo %>'></i></a>
+        </div>
+
+  </nav>
+
+  <section class="menu-bar" id="menu-bar">
+    <a href="/item/classifier/Immobilier">
+      <ul>
+        <li><i class='bx bxs-institution'></i></li>
+        <li>Immobilier</li>
+      </ul>
+    </a>
+    <a href="/item/classifier/Meuble">
+      <ul>
+        <li><i class='bx bxs-fridge'></i></li>
+        <li>Meuble</li>
+      </ul>
+    </a>
+    <a href="/item/classifier/Apareile">
+      <ul>
+        <li><i class='bx bx-tv'></i></li>
+        <li>Apareille</li>
+      </ul>
+    </a>
+    <a href="/moi">
+      <ul>
+        <li><i class='bx bx-user-circle'></i></li>
+        <li>Mon compte</li>
+      </ul>
+    </a>
+    <a href="/panier">
+        <ul>
+          <li><i class='bx bx-cart-add' ></i></li>
+          <li>Pagner <span class="badge text-bg-danger" style="color: white; background-color:#e13a0d;">+3</span></li>
+          
+        </ul>
+      </a>
+      <a href="/<%= log1Info %>">
+        <ul>
+          <li class='<%= logInfo %>' style="font-size: 30px; margin-bottom: 10px"></li>
+        </ul>
+      </a>
+  
+
+  </section>
+
+
+<nav id="navigation-bar-phone">
+
+<div id="phone-nav" class="ph">
+  <a href="/item/classifier/Immobilier">Immobilier</a>
+  <i class='bx bxs-institution'></i>
+</div>
+<div id="phone-nav" class="ph">
+  <a href="/item/classifier/Meuble">meuble</a>
+  <i class='bx bxs-fridge'></i>
+</div>
+<div id="phone-nav" type="button" class="btn btn-primary menu-principal" data-toggle="modal" data-target="#unique-menuModal">
+  <a >Menu</a>
+  <i class='bx bx-plus'></i>
+</div>
+<div id="phone-nav" class="ph">
+  <a href="/item/classifier/Apareile">Apareille</a>
+  <i class='bx bx-tv'></i>
+</div>
+<div id="phone-nav" class="ph">
+  <a href="/moi"><b>Moi</b></a>
+  <i class='bx bx-user-circle'></i>
+</div>
+
+</nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="main-intro">
+  <center>
+    <h3>Retrouve tout </h3>
+    <p>En un seul clic et voilà ton rêve</p>
+    <div class="search-data">
+      <i class="bx bx-search"></i>
+      <input id="searchInput" type="text" placeholder="Design, code, mar...">
+      <button id="searchBtn" class="btn btn-info">Rechercher</button>
+    </div>
+  </center>
+</section>
+
+<style>
+  .bar-de-resultat {
+    margin-left: 20%;
+    margin-right: 10%;
+    width: 70%;
+    height: 400px;
+    overflow: scroll;
+    top: 25vh;
+    left: 10vh;
+    min-height: 50px;
+    background-color: white;
+    border-radius: 20px;
+    border: none;
+    z-index: 999;
+    display: none;
+    padding: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+</style>
+
+<div class="bar-de-resultat" id="results"></div>
+
+<script>
+  const searchInput = document.getElementById('searchInput');
+  const searchBtn = document.getElementById('searchBtn');
+  const resultsDiv = document.getElementById('results');
+  let debounceTimeout;
+
+  searchBtn.addEventListener('click', function() {
+    search();
+  });
+
+  searchInput.addEventListener('input', function() {
+    clearTimeout(debounceTimeout);
+    debounceTimeout = setTimeout(function() {
+      search();
+    }, 300);
+  });
+
+  async function search() {
+    const query = searchInput.value.trim();
+    if (query.length > 0) {
+      // Display loading spinner
+      resultsDiv.innerHTML = '<div class="spinner-border text-primary" role="status"><span class="sr-only">Loading...</span></div>';
+
+      // Simulate a request delay
+      setTimeout(async function() {
+        // Fetch search results (replace with your actual fetch logic)
+        const results = await fetchSearchResults(query);
+
+        // Display results
+        displayResults(results);
+      }, 1000); // Simulated delay of 1 second
+    } else {
+      // Clear results if query is empty
+      resultsDiv.innerHTML = '';
+      resultsDiv.style.display = 'none';
+    }
+  }
+
+  async function fetchSearchResults(query) {
+    // Replace this with your actual fetch logic
+    // For example, fetch data from server
+    const response = await fetch('/search', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ query })
+    });
+    const data = await response.json();
+    return data;
+  }
+
+  function displayResults(results) {
+    const resultsDiv = document.getElementById('results');
+
+    if (results.length === 0) {
+      resultsDiv.innerHTML = '<p class="text-center">Pas de résultats trouvés.</p>';
+    } else {
+      const ul = document.createElement('ul');
+      ul.classList.add('list-group', 'mb-3', 'd-flex', 'flex-wrap');
+
+      results.forEach(result => {
+        const li = document.createElement('li');
+        li.classList.add('list-group-item', 'mb-3', 'border-0', 'shadow-sm', 'rounded', 'w-20');
+        li.style.background = 'white'; // Background color
+        li.innerHTML = `
+          <h6 class="mb-1" style="font-size: 12px">${result.nom}</h6>
+          <p class="mb-1" style="font-size: 10px">Prix: ${result.prix}</p>
+          <p class="mb-1" style="font-size: 10px">Origine: ${result.origine}</p>
+          <a href="/item/${result.id}" class="btn btn-primary btn-sm">Voir plus</a>
+        `;
+        ul.appendChild(li);
+      });
+
+      resultsDiv.innerHTML = ''; // Clear previous results
+      resultsDiv.appendChild(ul);
+    }
+
+    resultsDiv.style.display = 'block'; // Display the results container
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<% produits.forEach(function(produit) { %>
+
+<section id="resultat-produit">
+
+
+<div id="photo-et-description">
+
+    <div id="carouselExampleIndicators" class="carousel slide">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="/<%= produit.img_id %>/<%= produit.img1 %>" alt="<%= produit.img1 %>">
+          </div>
+          <div class="carousel-item">
+            <img src="/<%= produit.img_id %>/<%= produit.img2 %>" alt="<%= produit.img2 %>">
+          </div>
+          <div class="carousel-item">
+            <img src="/<%= produit.img_id %>/<%= produit.img3 %>"  alt="<%= produit.img3 %>">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true" ></span>
+          
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </button>
+      </div>
+    
+
+      <div id="image-description-item">
+        <div class="img-desc">
+        <img id="image-desrip" src="/<%= produit.img_id %>/<%= produit.img1 %>" alt="<%= produit.img1 %>">
+        </div>
+        <div class="img-desc">
+        <img id="image-desrip" src="/<%= produit.img_id %>/<%= produit.img2 %>" alt="<%= produit.img2 %>">
+        </div>
+        <div class="img-desc">
+        <img id="image-desrip" src="/<%= produit.img_id %>/<%= produit.img3 %>" alt="<%= produit.img3 %>">
+        </div>
+      </div>
+      
+        <div class="desc-produit">
+          <div id="titre-prod">
+            <h3><%= produit.nom %>, <%= produit.capacity %></h3>
+            <h4><%= produit.prix %> $ <span><%= produit.conditions %></span></h4>
+          </div>
+          <div id="det-date-prod">
+            <ul>
+              <li><i class='bx bx-map'></i><span><%= produit.origine %></span></li>
+              <li><i class='bx bxs-bullseye'>Stoke </i><span><%= produit.stock %></span></li>
+            </ul>
+          </div>
+          
+          <!-- Option de discussion WhatsApp -->
+          <div class="mb-3">
+            <button class="btn btn-success" onclick="openWhatsApp()">
+              <i class='bx bxl-whatsapp'></i> Discuter sur WhatsApp
+            </button>
+          </div>
+          <div id="produit-description-complet">
+            <h5 style="color: rgb(38, 190, 207);">Détails</h5>
+            <p><%= produit.description %></p>
+          </div>
+        </div>
+      
+      
+      
+
+
+
+
+</div>
+
+
+
+
+<div id="details-produit">
+
+
+
+
+
+
+  
+
+    <section class="contact-section" id="contact-section">
+      <div class="container col-md-9">
+        <h5 style="color: rgb(38, 190, 207);">description</h5>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">TYPE</th>
+            <th scope="col">CONDITION</th>
+            <th scope="col">MARQUE</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= produit.type %></td>
+            <td><%= produit.conditions %></td>
+            <td><%= produit.marque %></td>
+          </tr>
+
+        
+        </tbody>
+      </table>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">COULEUR</th>
+            <th scope="col">ORIGINE</th>
+            <th scope="col">GARANTI</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= produit.couleur %></td>
+            <td><%= produit.origine %></td>
+            <td><%= produit.garantie %> ans</td>
+          </tr>
+
+        
+        </tbody>
+      </table>
+    </div>
+
+      <div class="container">
+         
+          <div class="row mt-5">
+            <div class="col-md-9">
+              <h5 class="bg-green p-2 rounded" style="color: rgb(38, 190, 207);">Contactez-nous</h5>
+              <p class="mb-4">Pour toute question ou assistance, n'hésitez pas à nous contacter via WhatsApp ou par email.</p>
+              
+              <!-- Option de discussion WhatsApp -->
+              <div class="mb-3">
+                <button class="btn btn-success" onclick="openWhatsApp()">
+                  <i class='bx bxl-whatsapp'></i> Discuter sur WhatsApp
+                </button>
+                
+              </div>
+    
+              <!-- Formulaire Email -->
+              <div class="mb-4">
+                <h5>Envoyez-nous un Email :</h5>
+                <form action="mailto:example@example.com" method="post" enctype="text/plain">
+                  <div class="mb-3">
+                    <label for="emailBody" class="form-label">Message :</label>
+                    <textarea class="form-control" id="emailBody" rows="3" placeholder="Saisissez votre message ici"></textarea>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Envoyer Email</button>
+                </form>
+              </div>
+    
+              <!-- Détails de la Livraison -->
+              <div id="livraison-det">
+                <div>
+                <h5>1. Détails de la Livraison :</h5>
+                <p class="mb-3">La livraison peut être programmée via WhatsApp ou par email. Nous proposons une livraison à domicile avec des <br>frais à partir aux allentour de
+                  <br>
+                <span>Goma, Trois payote: <b>5$</b></span>
+              
+                </p>
+                <p class="mb-0">Livraison prévue le 25 Mai</p>
+                <p class="mb-4">Expédition 1/1 Fournie par KiVU business</p>
+              </div>
+                <div class="card mb-3">
+
+                  <div class="card-body bg-primary" style="color:white;">
+                    <h5>2. Aller sur place</h5>
+                    <h6 class="card-title">Address : arena shping mall <i class="bx bx-map"></i></h6>
+                    <p class="card-text">SHOP 22 , TVH</p>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+    
+    
+      <script>
+        var lien = '<%= produit.lien %>';
+        console.log(lien);
+        function openWhatsApp() {
+          // Remplacez le '1234567890' par le numéro WhatsApp avec lequel vous souhaitez discuter
+          window.open(`${lien}`, '_blank');
+        }
+      </script>
+        </div>
+        
+
+
+
+
+    </section>
+<% }); %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h4 class="text-left" style="margin: 10px;">Produit similaire</h4>
+  
+    <section id="resultat-produit">
+
+      <div id="item-resultat">
+        <script>
+        </script>
+        <% produitsimillaire.forEach(product => { %>
+          <a href="/item/<%= product.id %>" class="product-item">
+            <span><%= product.type %></span> 
+            <img src="/<%= product.img_id %>/<%= product.img1 %>" alt="<%= product.nom %>" loading="lazy">
+            <h5 class="product-title"><%= product.nom %></h5>
+            <p class="product-price">UGX <%= product.prix %></p> 
+          </a>
+        <% }); %>
+      </div>
+      
+      
+        
+      </section>
+      
+      
+
+
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <footer>
+        <section id="footer-content">
+          <div class="content">
+            <div id="logo-company">
+              <img src="/images/logo3.png" style="width: 100px; height:auto; border-radius: 10px;">
+            </div>
+            
+            <div id="company">
+              <h4>Company</h4>
+              <div id="link-company">
+                <a href="/apropos">About</a>
+                <a href="">Careers</a>
+                <a href="">Products</a>
+                <a href="">Countries</a>
+              </div>
+            </div>
+            
+            <div id="company">
+              <h4>Immeuble & mobilier</h4>
+              <div id="link-company">
+                <a href="/item/classifier/Immobilier/Parcelle">Parcelle</a>
+                <a href="/item/classifier/Immobilier/Maison">Maison</a>
+                <a href="/item/classifier/Immobilier/Maison_a_louer">Maison à louer</a>
+                <a href="/item/classifier/Immobilier/Vila">Vila</a>
+                <a href="/item/classifier/Meuble/Salon">Salon</a>
+                <a href="/item/classifier/Meuble/Cuisine">Cuisine</a>
+                <a href="/item/classifier/Meuble/Bureau">Bureau</a>
+                <a href="/item/classifier/Meuble/Sport">Sport</a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="service">
+            <section id="services-given">
+              <div id="services-list">
+                <h4>Appareille</h4>
+                <div id="link-company">
+                 <a href="/item/classifier/Apareille/Laptops">Laptops</a>
+      <a href="/item/classifier/Apareille/Telephone">Telephone</a>
+      <a href="/item/classifier/Apareille/Accessoire">Accessoire</a>
+      <a href="/item/classifier/Apareille/Camera">Camera</a>
+      <a href="/item/classifier/Apareille/Drone">Drone</a>
+      <a href="/item/classifier/Apareille/Appareille_de_Reseaux">Appareille de Reseaux</a>
+      <a href="/item/classifier/Apareille/PC">PC</a>
+      <a href="/item/classifier/Apareille/Routeur">Routeur</a>
+      <a href="/item/classifier/Apareille/Switch">Switch</a>
+      </div>
+      </div>
+      </section>
+      
+      <section id="services-given">
+      <div id="services-list">
+      <h4>Auto</h4>
+      <div id="link-company">
+      <a href="/item/classifier/Automobile/Voiture">Voiture</a>
+      <a href="/item/classifier/Automobile/Bus">Bus</a>
+      <a href="/item/classifier/Automobile/Moto">Moto</a>
+      <a href="/item/classifier/Automobile/Velo">Velo</a>
+      <a href="/item/classifier/Automobile/Piece_detacher">Piece détachée</a>
+      <a href="/item/classifier/Automobile/Europe">Europe</a>
+      <a href="/item/classifier/Automobile/Amerique">Amérique</a>
+      </div>
+      </div>
+      </section>
+      </div>
+      </section>
+      
+      <div class="down-content">
+      <div class="down-A">
+        <a href="/privacy">Politique de confidentialité</a>
+<a href="/cookies">Cookie confidentialité</a>
+<a href="/terms">Termes</a>
+<a href="/apropos">A propos</a>
+      </div>
+      
+      <div class="down-B">
+      <p style="color:red">Made with ATOM TECH ♥</p>
+      </div>
+      </div>
+      </footer>
+      
+      
+
+
+
+
+
+
+
+
+
+
+<script>
+  
+</script>
+</body>
+</html>

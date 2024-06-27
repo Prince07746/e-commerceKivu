@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="/javascript/chart.js"></script>
+    <script src="/external/bootstrap.bundle.js"></script>
+    <script src="/external/bootstrap.css"></script>
+    <script src="/javascript/comon1.js"></script>
+
+
+    
+    <link rel="stylesheet" href="/external/bootstrap.css">
+    <link href='/boxicons/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="/css/style.css">
+
+
+</head>
+<body>
+
+
+
+  <nav class="navbar navbar-expand-lg navbar-dark" id="navbar-main" style="background-color: black;">
+    <a class="navbar-brand" href="/">
+      <img src="/images/logo3.png" alt="Bootstrap" width="140" height="145">
+    </a>
+
+    <button class="navbar-toggler" type="button" id="button-menu" >
+      <span class="navbar-toggler-icon" id="icon-m"></span>
+      
+    </button>
+
+
+
+    <div id="utilisateur-item">
+        <a href="/panier" type="button" class="btn btn-primary btn-sm position-relative">
+            <i class='bx bx-cart-add' ></i>
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+              +<span>5</span>
+            </span>
+        </a>
+    
+        <a href="/<%= log1Info %>" id="utilisateur"><i class='<%= logInfo %>'></i></a>
+        </div>
+
+  </nav>
+
+  <section class="menu-bar" id="menu-bar">
+    <a href="/item/classifier/Immobilier">
+      <ul>
+        <li><i class='bx bxs-institution'></i></li>
+        <li>Immobilier</li>
+      </ul>
+    </a>
+    <a href="/item/classifier/Meuble">
+      <ul>
+        <li><i class='bx bxs-fridge'></i></li>
+        <li>Meuble</li>
+      </ul>
+    </a>
+    <a href="/item/classifier/Apareile">
+      <ul>
+        <li><i class='bx bx-tv'></i></li>
+        <li>Apareille</li>
+      </ul>
+    </a>
+    <a href="/moi">
+      <ul>
+        <li><i class='bx bx-user-circle'></i></li>
+        <li>Mon compte</li>
+      </ul>
+    </a>
+    <a href="/panier">
+        <ul>
+          <li><i class='bx bx-cart-add' ></i></li>
+          <li>Pagner <span class="badge text-bg-danger" style="color: white; background-color:#e13a0d;">+3</span></li>
+          
+        </ul>
+      </a>
+      <a href="/<%= log1Info %>">
+        <ul>
+          <li class='<%= logInfo %>' style="font-size: 30px; margin-bottom: 10px"></li>
+        </ul>
+      </a>
+  
+
+  </section>
+
+
+<nav id="navigation-bar-phone">
+
+<div id="phone-nav" class="ph">
+  <a href="/item/classifier/Immobilier">Immobilier</a>
+  <i class='bx bxs-institution'></i>
+</div>
+<div id="phone-nav" class="ph">
+  <a href="/item/classifier/Meuble">meuble</a>
+  <i class='bx bxs-fridge'></i>
+</div>
+<div id="phone-nav" type="button" class="btn btn-primary menu-principal" data-toggle="modal" data-target="#unique-menuModal">
+  <a >Menu</a>
+  <i class='bx bx-plus'></i>
+</div>
+<div id="phone-nav" class="ph">
+  <a href="/item/classifier/Apareile">Apareille</a>
+  <i class='bx bx-tv'></i>
+</div>
+<div id="phone-nav" class="ph">
+  <a href="/moi"><b>Moi</b></a>
+  <i class='bx bx-user-circle'></i>
+</div>
+
+</nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+    /*  FOR SCREEN LIKE PHONES , TABLET */
+@media screen and (max-width: 970px) {
+   
+    #termsEtcondition{
+        padding: 10px;
+        font-family: 'Montserrat';
+    } 
+    .accordion-button{
+        border: none;
+        font-size: 19px;
+        padding: 10px;
+        border-right: solid rgba(23, 137, 236, 0.115);
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+    }
+
+}
+
+/* FOR SCREEN  LIKE COMPUTERS  */
+
+
+@media screen and (min-width: 971px) {
+    #termsEtcondition{
+        padding: 10px;
+        font-family: 'Montserrat';
+        margin-top: 20vh;
+    } 
+    .accordion-button{
+        border: none;
+        font-size: 19px;
+        padding: 10px;
+        border-right: solid rgba(23, 137, 236, 0.115);
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+    }
+
+}
+</style>
+
+<section id="termsEtcondition">
+
+   <center>
+    <h4>Termes et conditions</h4>
+   </center>
+    <div class="container mt-5">
+        <div class="accordion accordion-flush" id="accordionTerms">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                1. Acceptance of Terms
+              </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionTerms">
+              <div class="accordion-body">
+                <p>By accessing and using this website, you agree to be bound by these terms and conditions.</p>
+                <p>En accédant et en utilisant ce site web, vous acceptez d'être lié par ces termes et conditions.</p>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                2. Product Information
+              </button>
+            </h2>
+            <div id="collapse" class="accordion-collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionTerms">
+              <div class="accordion-body">
+                <p>We strive to provide accurate product descriptions, but we do not warrant that product descriptions or other content on our website is accurate, complete, reliable, current, or error-free.</p>
+                <p>Nous nous efforçons de fournir des descriptions de produits précises, mais nous ne garantissons pas que les descriptions de produits ou tout autre contenu sur notre site web sont précis, complets, fiables, à jour ou sans erreur.</p>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                3. Ordering and Payment
+              </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionTerms">
+              <div class="accordion-body">
+                <p>Orders are subject to availability and confirmation of the order price. We reserve the right to refuse any order you place with us. We may, in our sole discretion, limit or cancel quantities purchased per person, per household, or per order.</p>
+                <p>Les commandes sont soumises à disponibilité et confirmation du prix de la commande. Nous nous réservons le droit de refuser toute commande que vous passez avec nous. Nous pouvons, à notre seule discrétion, limiter ou annuler les quantités achetées par personne, par foyer ou par commande.</p>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                4. Shipping and Delivery
+              </button>
+            </h2>
+            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionTerms">
+              <div class="accordion-body">
+                <p>Shipping costs and delivery times may vary depending on your location and the shipping method selected during checkout. We aim to dispatch orders within [X] business days after confirmation of payment.</p>
+                <p>Les frais d'expédition et les délais de livraison peuvent varier en fonction de votre emplacement et de la méthode d'expédition sélectionnée lors du paiement. Nous visons à expédier les commandes dans un délai de [X] jours ouvrables après confirmation du paiement.</p>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                5. Returns and Refunds
+              </button>
+            </h2>
+            <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionTerms">
+              <div class="accordion-body">
+                <p>We accept returns within [X] days of the original purchase date for a refund or exchange. Please note that returned items must be in their original condition and packaging.</p>
+                <p>Nous acceptons les retours dans un délai de [X] jours suivant la date d'achat initiale pour un remboursement ou un échange. Veuillez noter que les articles retournés doivent être dans leur état et emballage d'origine.</p>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                6. Privacy Policy
+              </button>
+            </h2>
+            <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionTerms">
+              <div class="accordion-body">
+                <p>Your privacy is important to us. Please review our Privacy Policy to understand how we collect, use, and disclose your personal information.</p>
+                <p>Votre vie privée est importante pour nous. Veuillez consulter notre Politique de confidentialité pour comprendre comment nous collectons, utilisons et divulguons vos informations personnelles.</p>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                7. Intellectual Property
+              </button>
+            </h2>
+            <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionTerms">
+              <div class="accordion-body">
+                <p>All content included on this site, such as text, graphics, logos, images, audio clips, and digital downloads, is the property of our company or its content suppliers and protected by international copyright laws.</p>
+                <p>Tous les contenus inclus sur ce site, tels que textes, graphiques, logos, images, extraits audio et téléchargements numériques, sont la propriété de notre entreprise ou de ses fournisseurs de contenu et protégés par les lois internationales sur le droit d'auteur.</p>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+                8. Limitation of Liability
+              </button>
+            </h2>
+            <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#accordionTerms">
+              <div class="accordion-body">
+                <p>We shall not be liable for any indirect, incidental, special, or consequential damages, including without limitation, lost profits or data, arising out of or in connection with your use of our website.</p>
+                <p>Nous ne serons pas responsables des dommages indirects, accessoires, spéciaux ou consécutifs, y compris, sans limitation, les pertes de profits ou de données, découlant de ou liés à votre utilisation de notre site web.</p>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+                9. Governing Law
+              </button>
+            </h2>
+            <div id="collapseNine" class="accordion-collapse collapse" aria-labelledby="headingNine" data-bs-parent="#accordionTerms">
+              <div class="accordion-body">
+                <p>These terms and conditions shall be governed by and construed in accordance with the laws of [Your Country], and you irrevocably submit to the exclusive jurisdiction of the courts in that location.</p>
+                <p>Ces termes et conditions seront régis et interprétés conformément aux lois de [Votre pays], et vous soumettez irrévocablement à la compétence exclusive des tribunaux de cet endroit.</p>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
+                10. Changes to Terms
+              </button>
+            </h2>
+            <div id="collapseTen" class="accordion-collapse collapse" aria-labelledby="headingTen" data-bs-parent="#accordionTerms">
+              <div class="accordion-body">
+                <p>We reserve the right to modify or replace these terms and conditions at any time. It is your responsibility to check our website periodically for changes. Your continued use of or access to our website constitutes acceptance of those changes.</p>
+                <p>Nous nous réservons le droit de modifier ou de remplacer ces termes et conditions à tout moment. Il est de votre responsabilité de vérifier périodiquement notre site web pour les changements. Votre utilisation continue de notre site web constitue votre acceptation de ces changements.</p>
+              </div>
+            </div>
+          </div>
+          <!-- More terms and conditions can be added in a similar fashion -->
+        </div>
+      </div>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<footer>
+  <section id="footer-content">
+    <div class="content">
+      <div id="logo-company">
+        <img src="/images/logo3.png" style="width: 100px; height:auto; border-radius: 10px;">
+      </div>
+      
+      <div id="company">
+        <h4>Company</h4>
+        <div id="link-company">
+          <a href="/apropos">About</a>
+          <a href="">Careers</a>
+          <a href="">Products</a>
+          <a href="">Countries</a>
+        </div>
+      </div>
+      
+      <div id="company">
+        <h4>Immeuble & mobilier</h4>
+        <div id="link-company">
+          <a href="/item/classifier/Immobilier/Parcelle">Parcelle</a>
+          <a href="/item/classifier/Immobilier/Maison">Maison</a>
+          <a href="/item/classifier/Immobilier/Maison_a_louer">Maison à louer</a>
+          <a href="/item/classifier/Immobilier/Vila">Vila</a>
+          <a href="/item/classifier/Meuble/Salon">Salon</a>
+          <a href="/item/classifier/Meuble/Cuisine">Cuisine</a>
+          <a href="/item/classifier/Meuble/Bureau">Bureau</a>
+          <a href="/item/classifier/Meuble/Sport">Sport</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="service">
+      <section id="services-given">
+        <div id="services-list">
+          <h4>Appareille</h4>
+          <div id="link-company">
+           <a href="/item/classifier/Apareille/Laptops">Laptops</a>
+<a href="/item/classifier/Apareille/Telephone">Telephone</a>
+<a href="/item/classifier/Apareille/Accessoire">Accessoire</a>
+<a href="/item/classifier/Apareille/Camera">Camera</a>
+<a href="/item/classifier/Apareille/Drone">Drone</a>
+<a href="/item/classifier/Apareille/Appareille_de_Reseaux">Appareille de Reseaux</a>
+<a href="/item/classifier/Apareille/PC">PC</a>
+<a href="/item/classifier/Apareille/Routeur">Routeur</a>
+<a href="/item/classifier/Apareille/Switch">Switch</a>
+</div>
+</div>
+</section>
+
+<section id="services-given">
+<div id="services-list">
+<h4>Auto</h4>
+<div id="link-company">
+<a href="/item/classifier/Automobile/Voiture">Voiture</a>
+<a href="/item/classifier/Automobile/Bus">Bus</a>
+<a href="/item/classifier/Automobile/Moto">Moto</a>
+<a href="/item/classifier/Automobile/Velo">Velo</a>
+<a href="/item/classifier/Automobile/Piece_detacher">Piece détachée</a>
+<a href="/item/classifier/Automobile/Europe">Europe</a>
+<a href="/item/classifier/Automobile/Amerique">Amérique</a>
+</div>
+</div>
+</section>
+</div>
+</section>
+
+<div class="down-content">
+<div class="down-A">
+<a href="/privacy">Politique de confidentialité</a>
+<a href="/cookies">Cookie confidentialité</a>
+<a href="/terms">Termes</a>
+<a href="/apropos">A propos</a>
+</div>
+
+<div class="down-B">
+<p style="color:red">Made with ATOM TECH ♥</p>
+</div>
+</div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  
+</script>
+</body>
+</html>
