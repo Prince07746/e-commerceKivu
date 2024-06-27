@@ -462,7 +462,8 @@ app.get('/item/:id', async (req, res) => {
         produitsimillaire: produitsimillaire,
         utilisateur: "Membre",
         logInfo: "bx bx-user-circle",
-        log1Info: "login"
+        log1Info: "login",
+        panier: 0
       });
     }
   } catch (error) {
@@ -1343,7 +1344,7 @@ app.get("/panier",async (req,res)=>{
     const authenticated = await isAuthenticated(req.cookies);
 
     if(authenticated){
-      res.redirect('/dashboard');
+      res.redirect('/moi');
     }else{
       res.redirect('/login');
     }

@@ -285,9 +285,9 @@
   <% products.forEach(product => { %>
     <a href="/item/<%= product.id %>" class="product-item">
       <span><%= product.type %></span> 
-      <img src="<%= product.image %>" alt="<%= product.nom %>" loading="lazy">
+      <img src="/<%= product.img_id %>/<%= product.img1 %>" alt="<%= product.nom %>" loading="lazy">
       <h5 class="product-title"><%= product.nom %></h5>
-      <p class="product-price">UGX <%= product.prix %></p> 
+      <p class="product-price">$ <%= product.prix %></p> 
     </a>
   <% }); %>
   
