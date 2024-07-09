@@ -14,7 +14,7 @@ a full stack web app ( e-commerce web app with all Shopify accessories)
 - JAVASCRIPT, JQUERY
 - BOOTSTRAP, BOXICON
 - MYSQL
-
+- Python (data analysis)
 This code is a Node.js script that sets up an Express server with various middleware, routes, and configurations. It uses MySQL as the database, EJS as the view engine, and Nodemailer for sending emails. The server listens on port 3030.
 
 Here's a breakdown of the code:
